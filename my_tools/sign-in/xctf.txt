@@ -1,0 +1,34 @@
+GET /api/personal/daily_checkin HTTP/1.1
+Host: adworld.xctf.org.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0
+Accept: application/json, text/plain, */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+X-CSRF-Token: IjRhMThjNzk5NWUzNDhmZjNmMWZmZTIwOTg4ZmI0OWRhOGU1YTViNWIi.E5DvMQ.BPP8vYCEGimgURPvm2xM_r16rlM
+Connection: close
+Referer: https://adworld.xctf.org.cn/personal
+Cookie: session=1203cd1d-af95-41c1-86be-92c5d159af87; X-CSRF-Token=IjRhMThjNzk5NWUzNDhmZjNmMWZmZTIwOTg4ZmI0OWRhOGU1YTViNWIi.E5DvMQ.BPP8vYCEGimgURPvm2xM_r16rlM
+
+
+GET /api/users/unread_message HTTP/1.1
+Host: adworld.xctf.org.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0
+Accept: application/json, text/plain, */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+X-CSRF-Token: IjRhMThjNzk5NWUzNDhmZjNmMWZmZTIwOTg4ZmI0OWRhOGU1YTViNWIi.E5DvMQ.BPP8vYCEGimgURPvm2xM_r16rlM
+Connection: close
+Referer: https://adworld.xctf.org.cn/personal
+Cookie: session=1203cd1d-af95-41c1-86be-92c5d159af87; X-CSRF-Token=IjRhMThjNzk5NWUzNDhmZjNmMWZmZTIwOTg4ZmI0OWRhOGU1YTViNWIi.E5DvMQ.BPP8vYCEGimgURPvm2xM_r16rlM
+
+GET /personal/get_message/ HTTP/1.1
+Host: www.xctf.org.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+Connection: close
+Referer: https://www.xctf.org.cn/personal/54497/
+Cookie: csrftoken=K7hsrQEeg0ReEWFhrUkSTs2VcrSNu5ChIJ9Lehs4p0I15eAIcFwD78y7IJr4o61a; sessionid=rwsnp45k52plmn7m8tdcarrf6pcstbdt
+
