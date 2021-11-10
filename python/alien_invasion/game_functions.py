@@ -4,13 +4,16 @@ version:
 Author: ahtoh
 Date: 2021-11-08 20:45:51
 LastEditors: ahtoh
-LastEditTime: 2021-11-09 20:54:03
+LastEditTime: 2021-11-10 21:03:11
 '''
 
 import sys
 import pygame
 from pygame import key
 from pygame.constants import K_LEFT
+from bullet import Bullet
+
+
 
 def check_events(ship):
     for event in pygame.event.get():
