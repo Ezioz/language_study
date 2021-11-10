@@ -4,16 +4,23 @@
  * @Author: ahtoh
  * @Date: 2021-11-10 16:51:36
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-10 16:52:41
+ * @LastEditTime: 2021-11-10 22:37:31
  */
 
-
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    char *s = "hello world";
-    printf("The string is %zd characters long.\n", strlen(s));
+    int *p1;
+    float *p2;
+    p1 = (int *)malloc(sizeof(int));
+    p2 = (float *)malloc(sizeof(float));
+    if (p1 != NULL && p2 != NULL)
+    {
+        printf("空间分配成功");
+    }else{
+        printf("空间分配失败");
+    }
     return 0;
 }
