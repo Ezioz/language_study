@@ -6,10 +6,8 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-10 22:41:48
+ * @LastEditTime: 2021-11-11 10:59:58
  */
-
-
 
 #include <stdio.h>
 #include <string.h>
@@ -18,11 +16,12 @@
 #include <stdlib.h>
 
 // 宏定义
-#define MAX_LEN 10
-#define STU_NUM 30
-#define COURSE_NUM 6
-#define LEN sizeof(struct Student)
+#define MAX_LEN 10 // 字符串最大程度
+#define STU_NUM 30 // 最多学生数量
+#define COURSE_NUM 6 // 最多考试科目
+#define LEN sizeof(struct Student) // 结构体长度
 
+// 自定义Student 结构体类型，里面有结构体指针，指向下一个地址，构成链表
 typedef struct Student
 {
 	long num;
@@ -71,6 +70,11 @@ int main(void)
 	
 }
 
+/**
+ * @description: 定义1个整数变量i，获取用户的输入；根据用户的输入，通过case，进入响应的功能。
+ * @param i
+ * @return i
+ */
 
 int Menu(void)
 {
