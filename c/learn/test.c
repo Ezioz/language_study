@@ -7,8 +7,8 @@
  * @LastEditTime: 2021-11-10 22:37:31
  */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int main(void)
 {
