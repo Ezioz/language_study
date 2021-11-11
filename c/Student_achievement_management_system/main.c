@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-11 10:59:58
+ * @LastEditTime: 2021-11-11 14:34:29
  */
 
 #include <stdio.h>
@@ -33,6 +33,9 @@ typedef struct Student
 }STU;
 
 int Menu(void);
+void Print(STU *head, int n, int m);
+void AverSumofEveryStudent(STU *head, int n, int m);
+
 
 int main(void)
 {

@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-10 16:51:36
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-10 22:37:31
+ * @LastEditTime: 2021-11-11 13:44:11
  */
 
 #include <stdlib.h>
@@ -12,15 +12,15 @@
 
 int main(void)
 {
-    int *p1;
-    float *p2;
-    p1 = (int *)malloc(sizeof(int));
-    p2 = (float *)malloc(sizeof(float));
-    if (p1 != NULL && p2 != NULL)
+    struct student
     {
-        printf("空间分配成功");
-    }else{
-        printf("空间分配失败");
-    }
+        int num;
+        char name[40];
+        float score[7];
+    };
+
+    struct student student1 = {1, "aaaa0", 7.0};
+    printf("%d", student1.num);
+    
     return 0;
 }
