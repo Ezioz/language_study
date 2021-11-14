@@ -2,17 +2,16 @@
  * @Descripttion: 
  * @version: 
  * @Author: ahtoh
- * @Date: 2021-11-10 16:51:36
+ * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-12 17:14:00
+ * @LastEditTime: 2021-11-14 20:53:21
  */
 
-#include <stdlib.h>
 #include <stdio.h>
 
 int main(void)
 {
-    printf("dhuduiw\n/hsiwisk");
-    
+    int a = 10, b = 20;
+    printf("%d\t\t\t%d", a, b);
     return 0;
 }
