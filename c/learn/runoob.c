@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-15 17:00:03
+ * @LastEditTime: 2021-11-15 22:53:26
  */
 
 #include <stdio.h>
@@ -198,4 +198,71 @@ int test(void)
 */
 
 
+/**
+ * @name: 链表内容学习
+ * @msg: https://blog.csdn.net/Endeavor_G/article/details/80552680
+ * @param {*}
+ * @return {*}
+ */
 
+/*
+// 创建链表一般使用 typedef struct， 这样定义结构体变量时，就可以使用 LinkList *a 定义结构体类型变量
+typedef struct student
+{
+    int score;
+    struct strudent *next;  
+} LinkList;
+
+// 初始化一个链表，n为链表节点的个数
+LinkList *create(int n)
+{
+    // 定义头节点、普通节点、尾部节点
+    LinkList *head, *node, *end;
+    // 分配地址
+    head = (LinkList *)malloc(sizeof(LinkList));
+    end = head;
+    for (int i = 0; i < n; i++)
+    {
+        node = (LinkList *)malloc(sizeof(LinkList));
+        scanf("%d", &node->score);
+        end->next = node;
+    }
+    end->next = NULL;
+    return head;
+    
+}
+
+*/
+
+
+struct LinkNOde
+    {
+        int data;
+        struct LinkNode *next;
+    };
+void test(void)
+{
+    struct LinkNOde node1 = {10, NULL};
+    struct LinkNOde node2 = {20, NULL};
+    struct LinkNOde node3 = {30, NULL};
+    struct LinkNOde node4 = {40, NULL};
+    struct LinkNOde node5 = {50, NULL};
+
+    node1.next = &node2;
+    node2.next = &node3;
+    node3.next = &node4;
+    node4.next = &node5;
+    // 这有问题
+    struct LinkNode *pCurrent = &node1;
+    printf("%p\n", &pCurrent);
+    printf("%p\n", &node1);
+
+    
+}
+
+int main(void)
+{
+    
+    test();
+    return 0;
+}
