@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-15 15:31:13
+ * @LastEditTime: 2021-11-15 17:00:03
  */
 
 #include <stdio.h>
@@ -153,7 +153,7 @@ int main(void)
 }
 */
 
-
+/*
 // 内存管理，没搞懂
 int main(void)
 {
@@ -172,5 +172,30 @@ int main(void)
     printf("Description: %s \n", description);
     return 0;
 }
+*/
+
+/*
+int test(void);
+int main(void)
+{
+    int b = test();
+    printf("%d\n", b);
+    return 0;
+}
+
+int test(void)
+{
+    int a = 0;
+    if (a > 0)
+    {
+        // 如果在这里 return 了，后面的内容都不再执行。
+        return 10;
+    }
+    printf("aaa\n");
+    return 0;
+    
+}
+*/
+
 
 
