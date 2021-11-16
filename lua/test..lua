@@ -4,16 +4,9 @@ version:
 Author: ahtoh
 Date: 2021-11-03 15:28:48
 LastEditors: ahtoh
-LastEditTime: 2021-11-03 15:58:22
+LastEditTime: 2021-11-16 17:11:01
 --]]
---[[
-Descripttion: 
-version: 
-Author: ahtoh
-Date: 2021-11-03 15:28:48
-LastEditors: ahtoh
-LastEditTime: 2021-11-03 15:30:49
---]]
+
 
 a = 21
 b = 10
