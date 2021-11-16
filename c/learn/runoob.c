@@ -4,9 +4,11 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-16 12:28:03
+ * @LastEditTime: 2021-11-16 13:42:05
  */
 
+// 防止头文件重复包含
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -427,3 +429,15 @@ int main(void)
     return 0;
 }
 */
+
+// 动态链表
+
+struct LinkNode
+{
+    int data;
+    struct LinkNode *next;
+};
+// 初始化链表
+struct LinkNode *Init_LinkList();
+// 在值为oldval后插入一个新的newval
+void InsertByvalue_LinkList(struct LinkNode *head, int oldval, int newval);
