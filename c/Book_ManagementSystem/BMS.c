@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-16 17:04:03
+ * @LastEditTime: 2021-11-16 21:27:48
  */
 
 #include <stdio.h>
@@ -86,5 +86,16 @@ void add_stu(void)
     struct Stu *stu_p1 = NULL;
     struct Stu *stu_p2 = NULL;
     struct Stu stu;
+    puts("请输入学号：___\n");
+    scanf("%s", stu.no);
+    puts("查找中。。。");
+    if (search_stu(stu.no, &stu_p1, &stu_p2) == 1)
+    {
+        printf("已有该学生的记录！");
+        Sleep(1000);
+        return;
+    }
+    
+
     
 }
