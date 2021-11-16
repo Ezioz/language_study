@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-11-11 20:10:53
 LastEditors: ahtoh
-LastEditTime: 2021-11-13 23:15:35
+LastEditTime: 2021-11-16 17:25:05
 '''
 #! -*- coding:utf8 -*-
 import re
@@ -198,8 +198,8 @@ def show_student(studentList):
     format_data = '{:^6}{:^12}\t{:^12}\t{:^12}\t{:^12}\t{:^12}'
     for info in studentList:
         print(format_data.format(info.get('id'), info.get('name'),
-        str(info.get('englisg')), str(info.get('python')), str(info.get('c')),
-        str(info.get('englisg') + info.get('python') + info.get('c')).center(12)))
+        str(info.get('english')), str(info.get('python')), str(info.get('c')),
+        str(info.get('english') + info.get('python') + info.get('c')).center(12)))
         
 def total():
     if os.path.exists(filename):
