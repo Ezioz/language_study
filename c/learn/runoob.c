@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-15 22:53:26
+ * @LastEditTime: 2021-11-16 12:28:03
  */
 
 #include <stdio.h>
@@ -130,6 +130,8 @@ void printBook(struct Books *book)
 */
 
 /*
+
+// 结构体的使用
 int main(void)
 {
     typedef struct Books
@@ -154,13 +156,16 @@ int main(void)
 */
 
 /*
-// 内存管理，没搞懂
+// 内存管理，没搞懂 x
+// 现在搞懂了
 int main(void)
 {
     char name[100];
     char *description;
 
     strcpy(name, "Zara Ali");
+    // malloc() 函数的返回值必须是一个指针变量
+    // 并且需要将返回值强制转换为指针变量所指向的类型，详细内容往后看
     description = (char *)malloc(200 * sizeof(char));
     if (description == NULL)
     {
@@ -234,35 +239,191 @@ LinkList *create(int n)
 
 */
 
-
-struct LinkNOde
-    {
-        int data;
-        struct LinkNode *next;
-    };
-void test(void)
+/*
+// malloc() 函数
+int main(void)
 {
-    struct LinkNOde node1 = {10, NULL};
-    struct LinkNOde node2 = {20, NULL};
-    struct LinkNOde node3 = {30, NULL};
-    struct LinkNOde node4 = {40, NULL};
-    struct LinkNOde node5 = {50, NULL};
+    int *p1;
+    float *p2;
+    // malloc 函数返回的值必须是一个指针变量，而且使用强制类型转换的方式
+    // 将返回值转换成指针变量所指向的类型
+    p1 = (int *)malloc(sizeof(int));
+    p2 = (float *)malloc(sizeof(float));
+
+    if (p1 != NULL && p2 != NULL)
+    {
+        printf("空间分配成功。\n");
+        printf("%p \n %p", p1, p2);
+    }
+    else
+    {
+        printf("空间分配失败！");
+    }
+    
+}
+
+*/
+
+/*
+// calloc() 函数
+// (类型说明符 *)calloc(items, size)
+// 该函数的功能是在内存动态存储区分配items块大小为size字节的连续空间
+// 若分配成功，返回分配内存单元的首地址；分配失败，返回NULL
+int main(void)
+{
+    float *p;
+    int m = 3;
+    p = (float *)calloc(m, sizeof(float));
+    if (p != NULL)
+    {
+        printf("分配空间成功。\n");
+        printf("%p\n", p);
+        printf("%p", &p);
+    }
+    
+    
+
+
+}
+*/
+
+/*
+// free() 函数用来释放指针 p 所指向的内存区，参数 p 必须是先前调用
+// malloc() 函数或 calloc() 函数时返回的指针
+
+int main(void)
+{
+    int *p;
+    p = (int *)malloc(sizeof(int));
+    if (p == NULL)
+    {
+        printf("空间分配失败!");
+    }else{
+        *p = 8;
+        printf("%d\n", *p);
+        free(p);
+        
+    }
+    
+}
+
+*/
+
+/*
+// 结构体的动态内存分配
+
+struct person
+{
+    char name[20];
+    int age;
+    char address[100];
+};
+
+int main(void)
+{
+    struct person *pt;
+    pt = (struct person *)malloc(sizeof(struct person));
+    printf("%d\n", sizeof(pt->name));
+    printf("%d\n", sizeof(pt->age));
+    printf("%d\n", sizeof(pt->address));
+    printf("%d\n", sizeof(pt));
+    if (pt == NULL)
+    {
+        printf("failure");
+    }else{
+        printf("input name:");
+        // pt是一个结构体指针，指向结构体内的name元素，而name又是一个数组类型
+        // 数组名称代表的就是该数组的首地址，所以不需要取地址符 &
+        scanf("%s", pt->name);
+        printf("input age:");
+        scanf("%d", &pt->age);
+        printf("input address:");
+        scanf("%s", pt->address);
+        printf("%s, %d, %s", pt->name, pt->age, pt->address);
+        free(pt);
+    }
+    return 0;
+    
+}
+
+*/
+
+/* 单链指向这一块还是没有搞懂，感觉这个例子在瞎指
+// 单链表的建立分为三步
+// 1. 调用malloc()函数，动态分配某个结点大小的存储空间
+// 2. 向结点中的数据域存放数据
+// 3. 将该结点的指针域指向下一个结点的首地址
+
+struct student
+{
+    int number;
+    char name[20];
+    float score;
+    struct student *point;
+};
+
+int main(void)
+{
+    struct student *head, *end, *next, *p;
+    int snumber;
+    char sname[20];
+    float sscore;
+    head = (struct student *)malloc(sizeof(struct student));
+    if (head == NULL)
+    {
+        printf("failure!");
+    }else{
+        scanf("%d, %s, %f", &snumber, sname, &sscore);
+        head->number = snumber;
+        strcpy(head->name, sname);
+        head->score = sscore;
+        head->point = NULL;
+        end = head;
+        for (int i = 1; i < 4; i++)
+        {
+            next = (struct student *)malloc(sizeof(struct student));
+            scanf("%d, %s, %f", &snumber, sname, &sscore);
+            next->number = snumber;
+            strcpy(next->name, sname);
+            next->score = sscore;
+            next->point = NULL;
+            end->point = next;
+            end = next;
+        }
+        
+    }
+    return 0;   
+}
+
+*/
+
+/*
+// https://www.bilibili.com/video/BV1yv411y7AW?p=2&spm_id_from=pageDriver
+// 这个静态链表的示例比较清晰
+struct LinkNode
+{
+    int data;
+    struct LinkNode *next;
+};
+
+int main(void)
+{
+    struct LinkNode node1 = {10, NULL};
+    struct LinkNode node2 = {20, NULL};
+    struct LinkNode node3 = {30, NULL};
+    struct LinkNode node4 = {40, NULL};
 
     node1.next = &node2;
     node2.next = &node3;
     node3.next = &node4;
-    node4.next = &node5;
-    // 这有问题
+
     struct LinkNode *pCurrent = &node1;
-    printf("%p\n", &pCurrent);
-    printf("%p\n", &node1);
-
+    while (pCurrent != NULL)
+    {
+        printf("%d\n", pCurrent->data);
+        pCurrent = pCurrent->next;
+    }
     
-}
-
-int main(void)
-{
-    
-    test();
     return 0;
 }
+*/
