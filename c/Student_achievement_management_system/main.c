@@ -1,126 +1,118 @@
 /*
- * @Descripttion: 学生成绩管理系统，原GitHub链接
- * https://github.com/csyxwei/StudentScoreManagerSystem/blob/master/%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.c
- * 用于学习。
- * @version: 1.0
+ * @Descripttion:
+ * @version:
  * @Author: ahtoh
- * @Date: 2021-10-29 15:23:39
+ * @Date: 2021-11-17 10:29:43
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-16 14:34:45
- */
-/**
- * @description:
- * 照着别人程序写的时候，需要考虑到程序的功能，不然可能不知道这些代码做了什么
- * @param {*}
- * @return {*}
+ * @LastEditTime: 2021-11-17 15:40:26
  */
 
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 #include <stdlib.h>
 
 // 宏定义
-#define MAX_LEN 10				   // 字符串最大程度
-#define STU_NUM 30				   // 最多学生数量
-#define COURSE_NUM 6			   // 最多考试科目
-#define LEN sizeof(struct Student) // 结构体长度
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
+#define LEN sizeof(struct student)
 
-// 自定义Student 结构体类型，里面有指针域，用于构成链表
-typedef struct Student
+// 学生结构体，只有id，名字，英语、python、c的成绩
+typedef struct student1
 {
-	long num;
-	char name[MAX_LEN];
-	float score[COURSE_NUM];
-	float sum;
-	float aver;
-	struct Student *next;
-} STU;
+    int id;
+    char name[30];
+    float english;
+    float python;
+    float c;
+    struct student *next;
+} Stu, *LinkList;
 
-int Menu(void);						 // 添加菜单
-STU *Create(int n, int m);			 // 创建链表并录入信息
-void Print(STU *head, int n, int m); // 打印函数
+// 函数定义
+void Menu(void);
+LinkList insert();
+void show(LinkList h);
 
 int main(void)
 {
-	int n, m; // n 是学生数，m是课程数
-	int i;
-	STU *head;						   // 定义头节点
-	head = (STU *)malloc(sizeof(LEN)); // 获取内存空间
-	while (1)
-	{
-		i = Menu();
-		if (i == 1)
-		{
-			system("cls");							   // 清屏
-			printf("Input student number(n < 30):\n"); //输入学生数
-			scanf("%d", &n);
-			printf("Input course number(m <= 6):\n");
-			scanf("%d", &m);
-		}
-		switch (i)
-		{
-		case 1:
-			printf("Input student's ID, name and score:\n");
-			head = Create(n, m);
-			break;
+    system("chcp 65001");
+    BOOL bool = TRUE;
+    int i = 1;
+    while (bool)
+    {
+        Menu();
+        printf("请输入您要选择的功能：");
+        // scanf("%d", &i);
+        if (i == 1)
+        {
+            LinkList linkhead = insert();
+            show(linkhead);
+        }
 
-		default:
-			break;
-		}
-	}
+    }
+    return 0;
 }
 
-/**
- * @description: 定义1个整数变量i，获取用户的输入；根据用户的输入，通过case，进入响应的功能。
- * @param i
- * @return i
- */
-
-int Menu(void)
+// 创建学生信息
+LinkList insert()
 {
-	int i;
-	system("title 学生成绩管理系统V1.0 By ahtoh");
-	printf("1. Input record");
-	printf("2. Caculate total and average score of every course\n");
-	printf("3. Caculate total and average score of every student\n");
-	printf("4. Sort in descending order by score\n");
-	printf("5. Sort in ascending order by score\n");
-	printf("6. Sort in ascending order by number\n");
-	printf("7. Sort in dictionary order by name\n");
-	printf("8. Search by number\n");
-	printf("9. Search by name\n");
-	printf("10. Statistic analysis\n");
-	printf("11. List record\n");
-	printf("12. Write to a file\n");
-	printf("13. Read from a file\n");
-	printf("0. Exit\n");
-	printf("Please input your choice:");
-	scanf("%d", &i);
-	return i;
+    Stu *head, *next, *end;
+    head = (LinkList)malloc(sizeof(Stu));
+    if (head == NULL)
+    {
+        return 0;
+    }
+    head->next = NULL;
+    next = head;
+    printf("请输入要录入学生的个数\n");
+    int n = 3;
+    // scanf("%d", n);
+    for (int j = 0; j < n; j++)
+    {
+        end = (LinkList)malloc(sizeof(Stu));
+        // if (!end)
+        // {
+        //     return 0;
+        // }
+        printf("请输入学生id：");
+        scanf("%d", &end->id);
+        printf("请输入姓名:");
+        scanf("%s", end->name);
+        printf("请输入英语成绩：");
+        scanf("%f", &end->english);
+        printf("请输入python成绩：");
+        scanf("%f", &end->python);
+        printf("请输入 c 成绩：");
+        scanf("%f", &end->c);
+        next->next = end;
+        end->next = NULL;
+        next = end;
+    }
+    return head;
 }
 
-STU *Create(int n, int m)
+// 全部展示学生信息
+void show(LinkList h)
 {
-	STU *head, *p1, *p2;
-	for (int i = 0; i < n + 1; i++)
-	{
-		p1 = (STU *)malloc(LEN);
-		scanf("%ld", &p1->num);
-		scanf("%s", p1->name);
-		for (int j = 0; j < m; j++)
-		{
-			printf("第 %d 门课程", j + 1);
-			scanf("%f", &p1->score[j]);
-		}
-		p1->next = NULL;
-		if (i == 1)
-		{
-			head = p2 = p1;
-		}else{
-			p2->next = p1;
-			p2 = p1;
-		}
-	}
-	return head;
+    LinkList p = h->next;
+    while (p != NULL)
+    {
+        printf("学生id：%d，姓名：%s，English：%0.2f, python：%0.2f，c：%0.2f\n", p->id, p->name, p->english, p->python, p->c);
+        p = p->next;
+    }
+    
+}
+
+// 菜单
+void Menu(void)
+{
+    puts("学生信息管理系统\n\
+    1. 录入学生信息\n\
+    2. 查找学生信息\n\
+    3. 删除学生信息\n\
+    4. 修改学生信息\n\
+    5. 排序\n\
+    6. 统计学生信息\n\
+    7. 显示所有学生信息\n\
+    0. 退出系统");
 }
