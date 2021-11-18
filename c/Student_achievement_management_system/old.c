@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-18 17:24:13
+ * @LastEditTime: 2021-11-18 20:12:28
  */
 /**
  * @description:
@@ -101,8 +101,29 @@ int main(void)
         case 5:
             system("cls");
             printf("Sort in ascending order by score:");
-            head = SortbyScore(head, n);
+            head = SortbyScore1(head, n);
             Print(head, n, m);
+            break;
+        case 6:
+            system("cls");
+            printf("Sort in ascending order by number:\n");
+            head = SortbyNum(head);
+            break;
+        case 7:
+            system("cls");
+            printf("Sort in dictionary order by name:\n");
+            head = SortbyName(head, n);
+            Print(head, n, m);
+            break;
+        case 8:
+            system("cls");
+            printf("Input the number you want to search:\n");
+            SearchbyNum(head, n, m);
+            break;
+        case 9:
+            system("cls");
+            printf("Input the name you want to search:");
+            SearchbyName(head, n, m);
             break;
 
         default:
