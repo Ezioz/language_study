@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 21:15:38
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-17 22:47:31
+ * @LastEditTime: 2021-11-18 13:02:56
  */
 
 #include <stdio.h>
@@ -13,6 +13,7 @@
 
 #define TSIZE 45
 
+// 定义结构体
 struct film
 {
     char title[TSIZE];
@@ -23,8 +24,8 @@ struct film
 char *s_gets(char *st, int n);
 int main(void)
 {
-    struct film *head = NULL;
-    struct film *prev, *current;
+    struct film *head = NULL; // 头指针指向空
+    struct film *prev, *current; // prev，上一个；current 当前
     char input[TSIZE];
     puts("Entert first movie title:");
     while (s_gets(input, TSIZE) != NULL && input[0] != '\0')
@@ -46,7 +47,6 @@ int main(void)
             prev = current;
             
         }
-        
     }
     if (head == NULL)
     {
@@ -89,10 +89,7 @@ char *s_gets(char *st, int n)
             {
                 continue;
             }
-            
         }
-        
     }
     return ret_val;
-    
 }

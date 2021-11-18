@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 15:49:58
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-17 16:36:48
+ * @LastEditTime: 2021-11-18 15:05:01
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,19 +16,17 @@ typedef struct LNode
 {
     int data;
     struct LNode *next;
-    struct LNode *znext;
 } LNode, *LinkList;
 
 LinkList CreateList(int n);
 void print(LinkList h);
-
 int main(void)
 {
     LinkList head = NULL;
     int n;
     scanf("%d", &n);
     head = CreateList(n);
-    printf("刚刚建立的各个结点的值为：\n");
+    printf("刚刚建立的各个链表的值为：");
     print(head);
     system("pause");
     return 0;
@@ -37,19 +35,18 @@ int main(void)
 LinkList CreateList(int n)
 {
     LinkList L, p, q;
-    L = (LinkList)malloc(sizeof(LNode));
+    L = (LNode *)malloc(sizeof(LNode));
     if (!L)
     {
         return 0;
     }
     L->next = NULL;
     q = L;
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        p = (LinkList)malloc(sizeof(LNode));
+        p = (LNode *)malloc(sizeof(LNode));
         printf("请输入第 %d 个元素的值：", i);
         scanf("%d", &p->data);
-        p->znext = q;
         q->next = p;
         p->next = NULL;
         q = p;

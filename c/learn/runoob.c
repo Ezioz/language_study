@@ -4,12 +4,23 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-17 15:05:07
+ * @LastEditTime: 2021-11-18 17:20:31
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+int main(void)
+{
+    int a = 3, *p;
+    p = a;
+    printf("*p:%d\n", p);
+    printf("a:%d\n", a);
+    printf("*p:%p\n", &p);
+    printf("a:%p", &a);
+    return 0;
+}
 
 /*
 // 区别理解指针和指针变量，脸红
