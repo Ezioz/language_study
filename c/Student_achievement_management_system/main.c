@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 10:29:43
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-17 15:40:26
+ * @LastEditTime: 2021-11-18 15:11:07
  */
 
 #include <stdio.h>
@@ -36,20 +36,20 @@ void show(LinkList h);
 int main(void)
 {
     system("chcp 65001");
-    BOOL bool = TRUE;
-    int i = 1;
-    while (bool)
+    Menu();
+    printf("请输入您要选择的功能：");
+    int i;
+    scanf("%d", &i);
+    if (i == 1)
     {
-        Menu();
-        printf("请输入您要选择的功能：");
-        // scanf("%d", &i);
-        if (i == 1)
-        {
-            LinkList linkhead = insert();
-            show(linkhead);
-        }
-
+        printf("1");
+        system("pause");
+    }else if (i == 7)
+    {
+        LinkList linkhead = insert();
+        show(linkhead);
     }
+    
     return 0;
 }
 
