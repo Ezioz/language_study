@@ -4,13 +4,27 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-18 17:20:31
+ * @LastEditTime: 2021-11-19 17:15:39
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+// 判断大小端序
+
+bool IsBigEndian()
+{
+    int a = 1;
+    if(((char *)&a)[3] == 1)
+    return true;
+    else
+    return false;
+}
+
+
+/*
+// 区别指针与其地址
 int main(void)
 {
     int a = 3, *p;
@@ -21,7 +35,7 @@ int main(void)
     printf("a:%p", &a);
     return 0;
 }
-
+*/
 /*
 // 区别理解指针和指针变量，脸红
 typedef struct test
