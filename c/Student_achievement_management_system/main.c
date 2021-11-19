@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 10:29:43
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-18 15:11:07
+ * @LastEditTime: 2021-11-19 10:00:36
  */
 
 #include <stdio.h>
@@ -18,7 +18,7 @@
 #define LEN sizeof(struct student)
 
 // 学生结构体，只有id，名字，英语、python、c的成绩
-typedef struct student1
+typedef struct student
 {
     int id;
     char name[30];
@@ -36,20 +36,25 @@ void show(LinkList h);
 int main(void)
 {
     system("chcp 65001");
-    Menu();
-    printf("请输入您要选择的功能：");
-    int i;
-    scanf("%d", &i);
-    if (i == 1)
+    LinkList head;
+    head = (LinkList)malloc(sizeof(LEN));
+    while (1)
     {
-        printf("1");
-        system("pause");
-    }else if (i == 7)
-    {
-        LinkList linkhead = insert();
-        show(linkhead);
-    }
-    
+        printf("请输入您要选择的功能:\n");
+        Menu();
+        switch (1)
+        {
+        case 1:
+            head = insert();
+            printf("信息录入完成!\n");
+            break;
+            case 2:
+            
+        default:
+            break;
+        }
+
+    }  
     return 0;
 }
 
@@ -65,15 +70,15 @@ LinkList insert()
     head->next = NULL;
     next = head;
     printf("请输入要录入学生的个数\n");
-    int n = 3;
-    // scanf("%d", n);
+    int n;
+    scanf("%d", &n);
     for (int j = 0; j < n; j++)
     {
         end = (LinkList)malloc(sizeof(Stu));
-        // if (!end)
-        // {
-        //     return 0;
-        // }
+        if (!end)
+        {
+            return 0;
+        }
         printf("请输入学生id：");
         scanf("%d", &end->id);
         printf("请输入姓名:");
