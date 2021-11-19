@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-19 13:40:52
+ * @LastEditTime: 2021-11-19 13:48:00
  */
 /**
  * @description:
@@ -314,7 +314,7 @@ STU *SortbyScore1(STU *head, int n)
     return head;
 }
 
-// // 按学号由小到大排出成绩表
+// 按学号由小到大排出成绩表
 STU *SortbyNum(STU *head)
 {
     STU *first, *t, *p, *q;
