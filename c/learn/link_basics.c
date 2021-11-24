@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-22 21:15:17
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-24 14:07:24
+ * @LastEditTime: 2021-11-24 16:34:01
  */
 
 #include <stdio.h>
@@ -16,16 +16,16 @@ typedef struct Link
     struct Link *next;
 } link;
 
-link *initLink();
-void display(link *p);
-link *insertElem(link *p, int elem, int add);
-link *delElem(link *p, int add);
-int selectElem(link *p, int elem);
-link *amendElem(link *p, int add, int newElem);
+link *initLink();                               //创建链表
+void display(link *p);                          //展示
+link *insertElem(link *p, int elem, int add);   //插入
+link *delElem(link *p, int add);                //删除
+int selectElem(link *p, int elem);              //查找
+link *amendElem(link *p, int add, int newElem); //修改
 
 int main(void)
 {
-    link *p = NULL;
+    link *p = NULL; //定义一个头指针变量即可，该值只是一个
     printf("初始链表为：\n");
     p = initLink();
     display(p);

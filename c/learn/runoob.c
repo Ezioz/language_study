@@ -4,14 +4,82 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-19 17:15:39
+ * @LastEditTime: 2021-11-24 17:07:18
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// 判断大小端序
+// 看教程上说，结点插入的时候，第一步是将插入结点的指针指向下一节点；第二步是将前面的指针指向插入结点，反过来就不行了，我有点好奇
+// 哈哈，还没写第二种就发现不对了。如果先将前一个指针指向新插入的结点，那么之后的结点就没法找了，因为后续结点与前面结点的联系断了，新插入的结点没有依据指向后面的结点了
+
+typedef struct Link
+{
+    int elem;
+    struct Link *next;
+} link;
+
+link *initLink(void);
+void display(link *p);
+link *insertElem_1(link *p, int add);
+link *insertElem_2(link *p, int add);
+
+int main(void)
+{
+    link *p;
+    p = initLink();
+    display(p);
+    printf("在第 2 个结点的位置插入数值10\n");
+    printf("第一种方式，正常的那种\n");
+    p = insertElem_1(p, 2);
+    display(p);
+    return 0;
+}
+
+link *initLink(void)
+{
+    link *p = (link *)malloc(sizeof(struct Link));
+    link *temp = p;
+    for (int i = 1; i < 4; i++)
+    {
+        link *a = (link *)malloc(sizeof(link));
+        a->elem = i;
+        a->next = NULL;
+        temp->next = a;
+        temp = temp->next;
+    }
+    return p;
+}
+
+void display(link *p)
+{
+    link *temp = p;
+    int i = 2;
+    while (temp->next)
+    {
+        temp = temp->next; //先将temp从头结点移到第二个结点
+        printf("第 %d 个结点，值为 %d\n", i, temp->elem);
+        i++;
+    }
+    printf("\n");
+}
+
+link *insertElem_1(link *p, int add)
+{
+    link *temp = p;
+    for (int i = 1; i < add; i++)
+    {
+        temp = temp->next; // 只循环了一次，从头节点移动到 1 的位置
+    }
+    link *c = (link *)malloc(sizeof(struct Link));
+    c->elem = 10;
+    c->next = temp->next;
+    temp->next = c;
+    return p;
+}
+/*
+// 判断大小端序， none
 
 bool IsBigEndian()
 {
@@ -21,7 +89,7 @@ bool IsBigEndian()
     else
     return false;
 }
-
+*/
 
 /*
 // 区别指针与其地址
