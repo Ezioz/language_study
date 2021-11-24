@@ -4,12 +4,145 @@
  * @Author: ahtoh
  * @Date: 2021-11-22 21:15:17
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-23 11:34:31
+ * @LastEditTime: 2021-11-24 14:07:24
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct Link
+{
+    int elem;
+    struct Link *next;
+} link;
+
+link *initLink();
+void display(link *p);
+link *insertElem(link *p, int elem, int add);
+link *delElem(link *p, int add);
+int selectElem(link *p, int elem);
+link *amendElem(link *p, int add, int newElem);
+
+int main(void)
+{
+    link *p = NULL;
+    printf("初始链表为：\n");
+    p = initLink();
+    display(p);
+
+    printf("在4 的位置插入元素5：\n");
+    p = insertElem(p, 5, 4);
+    display(p);
+
+    printf("删除元素3.\n");
+    p = delElem(p, 3);
+    display(p);
+
+    int address;
+    printf("查找元素2的位置。\n");
+    address = selectElem(p, 2);
+    if (address == -1)
+    {
+        printf("没有该元素。\n");
+    }
+    else
+    {
+        printf("%d\n", address);
+    }
+
+    printf("更改3的位置上的数据为7:\n");
+    p = amendElem(p, 3, 7);
+    display(p);
+
+    return 0;
+}
+
+link *initLink()
+{
+    link *p = (link *)malloc(sizeof(link));
+    link *temp = p;
+    for (int i = 1; i < 5; i++)
+    {
+        link *a = (link *)malloc(sizeof(struct Link));
+        a->elem = i;
+        a->next = NULL;
+        temp->next = a;
+        temp = temp->next;
+    }
+    return p;
+}
+
+link *insertElem(link *p, int elem, int add)
+{
+    link *temp = p;
+    for (int i = 1; i < add; i++)
+    {
+        if (temp == NULL)
+        {
+            printf("插入的位置无效.\n");
+            return p;
+        }
+        temp = temp->next;
+    }
+    link *c = (link *)malloc(sizeof(struct Link));
+    c->elem = elem;
+    c->next = temp->next; // 本来我写的是 c->next = NULL，以为是最后一个结点，但其实不是。不管此处是不是最后一个结点，我那种写法都不好，因为如果是最后一个结点，temp->next也是null。
+    temp->next = c;
+    return p;
+}
+
+link *delElem(link *p, int add)
+{
+    link *temp = p;
+    link *del = NULL;
+    for (int i = 1; i < add; i++)
+    {
+        temp = temp->next;
+    }
+    del = temp->next;
+    temp->next = temp->next->next;
+    free(del);
+    return p;
+}
+
+int selectElem(link *p, int elem)
+{
+    link *temp = p;
+    int i = 1;
+    while (temp->next)
+    {
+        temp = temp->next;
+        if (temp->elem == elem)
+            return i;
+        i++;
+    }
+    return -1;
+}
+
+link *amendElem(link *p, int add, int newElem)
+{
+    link *temp = p;
+    temp = temp->next;
+    for (int i = 1; i < add; i++)
+    {
+        temp = temp->next;
+    }
+    temp->elem = newElem;
+    return p;
+}
+
+void display(link *p)
+{
+    link *temp = p;
+    while (temp->next)
+    {
+        temp = temp->next;
+        printf("%d ", temp->elem);
+    }
+    printf("\n");
+}
+
+/*
 typedef struct Link
 {
     int elem;
@@ -118,3 +251,4 @@ link *amendElem(link *p, int add, int newElem)
     temp->elem = newElem;
     return p;
 }
+*/
