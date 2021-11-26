@@ -4,13 +4,25 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-24 17:07:18
+ * @LastEditTime: 2021-11-26 15:53:21
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+/*
+// 这是可以的
+int main(void)
+{
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d %d", a, b);
+    system("pause");
+    return 0;
+}
+*/
+/*
 // 看教程上说，结点插入的时候，第一步是将插入结点的指针指向下一节点；第二步是将前面的指针指向插入结点，反过来就不行了，我有点好奇
 // 哈哈，还没写第二种就发现不对了。如果先将前一个指针指向新插入的结点，那么之后的结点就没法找了，因为后续结点与前面结点的联系断了，新插入的结点没有依据指向后面的结点了
 
@@ -78,6 +90,7 @@ link *insertElem_1(link *p, int add)
     temp->next = c;
     return p;
 }
+*/
 /*
 // 判断大小端序， none
 
