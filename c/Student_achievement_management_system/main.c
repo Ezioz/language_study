@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 10:29:43
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-19 10:00:36
+ * @LastEditTime: 2021-11-26 15:59:00
  */
 
 #include <stdio.h>
@@ -28,38 +28,62 @@ typedef struct student
     struct student *next;
 } Stu, *LinkList;
 
-// 函数定义
-void Menu(void);
-LinkList insert();
-void show(LinkList h);
+void Menu(void);                             // 菜单
+LinkList Iint();                             // 创建学生信息（链表）
+void Search(LinkList head, int temp_id);     // 查找学生信息
+void show(LinkList h);                       // 展示学生信息
+LinkList Delete(LinkList head, int temp_id); // 删除学生信息
+LinkList Amelem(LinkList head, int temp_id); // 修改学生信息
 
 int main(void)
 {
     system("chcp 65001");
     LinkList head;
     head = (LinkList)malloc(sizeof(LEN));
+    head->next = NULL;
+    int menu, temp_id;
     while (1)
     {
-        printf("请输入您要选择的功能:\n");
         Menu();
-        switch (1)
+        printf("请输入您要选择的功能:\n");
+        scanf("%d", &menu);
+        switch (menu)
         {
         case 1:
-            head = insert();
+            head = Iint();
             printf("信息录入完成!\n");
             break;
-            case 2:
-            
+        case 2:
+            printf("请输入您要查询学生的id：\n");
+            scanf("%d", &temp_id);
+            Search(head, temp_id);
+            break;
+        case 3:
+            printf("请输入要删除的学生id：\n");
+            scanf("%d", &temp_id);
+            head = Delete(head, temp_id);
+            printf("剩余学生信息如下：\n");
+            show(head);
+            break;
+        case 4:
+            printf("请输入要修改学生信息的id：\n");
+            scanf("%d", &temp_id);
+            head = Amelem(head, temp_id);
+            show(head);
+        case 7:
+            show(head);
+            break;
+        case 0:
+            exit(0);
         default:
             break;
         }
-
-    }  
+    }
     return 0;
 }
 
-// 创建学生信息
-LinkList insert()
+// 创建学生信息，此处有bug，重复调用会覆盖
+LinkList Iint()
 {
     Stu *head, *next, *end;
     head = (LinkList)malloc(sizeof(Stu));
@@ -96,16 +120,117 @@ LinkList insert()
     return head;
 }
 
+// 查找学生信息
+void Search(LinkList head, int temp_id)
+{
+    LinkList temp = head;
+    if (temp->next != NULL)
+    {
+        while (temp)
+        {
+            if (temp->id == temp_id)
+            {
+                printf("学生id：%d，姓名：%s，English：%0.2f, python：%0.2f，c：%0.2f\n", temp->id, temp->name, temp->english, temp->python, temp->c);
+                break;
+            }
+            else if (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            else
+            {
+                printf("没有找到该id信息。\n");
+                break;
+            }
+        }
+    }
+    else
+    {
+        printf("没有学生信息！\n");
+    }
+}
+
+// 删除学生信息
+LinkList Delete(LinkList head, int temp_id)
+{
+    LinkList temp = head;
+    LinkList del = NULL;
+
+    if (temp->next != NULL)
+    {
+        while (temp)
+        {
+            if (temp->next->id == temp_id)
+            {
+                del = temp->next;
+                temp->next = temp->next->next;
+                free(del);
+                return head;
+            }
+            else if (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            else
+            {
+                printf("没有该id信息。\n");
+                break;
+            }
+        }
+    }
+    else
+    {
+        printf("没有学生信息！\n");
+    }
+}
+
+// 修改学生信息
+LinkList Amelem(LinkList head, int temp_id)
+{
+    LinkList temp = head;
+    if (temp->next != NULL)
+    {
+        while (temp)
+        {
+            if (temp->id == temp_id)
+            {
+                printf("已查找到id为 %d 的学生信息。\n", temp_id);
+                printf("请输入新的English、python、c 成绩：\n");
+                scanf("%d %d %d", &temp->english, &temp->python, &temp->c);
+                return head;
+            }
+            else if (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            else
+            {
+                printf("没有找到该id学生信息！\n");
+            }
+        }
+    }
+    else
+    {
+        printf("没有学生信息！\n");
+    }
+}
+
 // 全部展示学生信息
 void show(LinkList h)
 {
-    LinkList p = h->next;
-    while (p != NULL)
+    LinkList p = h;
+    if (p->next != NULL)
     {
-        printf("学生id：%d，姓名：%s，English：%0.2f, python：%0.2f，c：%0.2f\n", p->id, p->name, p->english, p->python, p->c);
-        p = p->next;
+        while (p->next != NULL)
+        {
+            p = p->next;
+            printf("学生id：%d，姓名：%s，English：%0.2f, python：%0.2f，c：%0.2f\n", p->id, p->name, p->english, p->python, p->c);
+        }
     }
-    
+    else
+    {
+        printf("没有学生信息！\n");
+    }
 }
 
 // 菜单
