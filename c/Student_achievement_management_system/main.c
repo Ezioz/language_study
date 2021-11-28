@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-17 10:29:43
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-26 15:59:00
+ * @LastEditTime: 2021-11-28 17:35:07
  */
 
 #include <stdio.h>
@@ -28,12 +28,14 @@ typedef struct student
     struct student *next;
 } Stu, *LinkList;
 
-void Menu(void);                             // 菜单
-LinkList Iint();                             // 创建学生信息（链表）
-void Search(LinkList head, int temp_id);     // 查找学生信息
-void show(LinkList h);                       // 展示学生信息
-LinkList Delete(LinkList head, int temp_id); // 删除学生信息
-LinkList Amelem(LinkList head, int temp_id); // 修改学生信息
+void Menu(void);                               // 菜单
+LinkList Iint();                               // 创建学生信息（链表）
+void Search(LinkList head, int temp_id);       // 查找学生信息
+LinkList Delete(LinkList head, int temp_id);   // 删除学生信息
+LinkList Amelem(LinkList head, int temp_id);   // 修改学生信息
+// LinkList SortElem(LinkList head, int temp_id); // 根据成绩排序链表，排序暂放，因为涉及了算法
+int total(LinkList head);                      // 统计学生个数
+void show(LinkList h);                         // 展示学生信息
 
 int main(void)
 {
@@ -70,6 +72,16 @@ int main(void)
             scanf("%d", &temp_id);
             head = Amelem(head, temp_id);
             show(head);
+        // case 5:
+        //     printf("请您选择排序方式：1.英语 2.python 3.c\n");
+        //     scanf("%d", &temp_id);
+        //     head = SortElem(head, temp_id);
+        //     show(head);
+        case 6:
+            printf("只统计学生个数。\n");
+            temp_id = total(head);
+            printf("目前共有学生 %d 名。\n", temp_id);
+            break;
         case 7:
             show(head);
             break;
@@ -213,6 +225,34 @@ LinkList Amelem(LinkList head, int temp_id)
     {
         printf("没有学生信息！\n");
     }
+}
+
+// 排序学生成绩
+// LinkList SortElem(LinkList head, int temp_id)
+// {
+//     if (temp_id >= 1 || temp_id <= 3)
+//     {
+//         LinkList temp, p, p1, p2;
+//         temp = head;
+//     }else
+//     {
+//         printf("您的输入有误！排序失败！");
+//     }
+
+// }
+
+// 统计学生个数
+int total(LinkList head)
+{
+    int student_number = 0;
+    LinkList temp = head;
+    // 这样最后一个结点会进入循环而少一次，但又由于头节点不存放数据，所以两者相抵
+    while (temp->next != NULL)
+    {
+        student_number++;
+        temp = temp->next;
+    }
+    return student_number;
 }
 
 // 全部展示学生信息
