@@ -33,7 +33,7 @@ LinkList Iint();                               // 创建学生信息（链表）
 void Search(LinkList head, int temp_id);       // 查找学生信息
 LinkList Delete(LinkList head, int temp_id);   // 删除学生信息
 LinkList Amelem(LinkList head, int temp_id);   // 修改学生信息
-// LinkList SortElem(LinkList head, int temp_id); // 根据成绩排序链表，排序暂放，因为涉及了算法
+LinkList SortElem(LinkList head, int temp_id); // 根据成绩排序链表，排序暂放，因为涉及了算法
 int total(LinkList head);                      // 统计学生个数
 void show(LinkList h);                         // 展示学生信息
 
@@ -72,11 +72,12 @@ int main(void)
             scanf("%d", &temp_id);
             head = Amelem(head, temp_id);
             show(head);
-        // case 5:
-        //     printf("请您选择排序方式：1.英语 2.python 3.c\n");
-        //     scanf("%d", &temp_id);
-        //     head = SortElem(head, temp_id);
-        //     show(head);
+        case 5:
+            printf("请您选择排序方式：1.英语 2.python 3.c\n");
+            scanf("%d", &temp_id);
+            head = SortElem(head, temp_id);
+            show(head);
+            break;
         case 6:
             printf("只统计学生个数。\n");
             temp_id = total(head);
@@ -228,18 +229,18 @@ LinkList Amelem(LinkList head, int temp_id)
 }
 
 // 排序学生成绩
-// LinkList SortElem(LinkList head, int temp_id)
-// {
-//     if (temp_id >= 1 || temp_id <= 3)
-//     {
-//         LinkList temp, p, p1, p2;
-//         temp = head;
-//     }else
-//     {
-//         printf("您的输入有误！排序失败！");
-//     }
+LinkList SortElem(LinkList head, int temp_id)
+{
+    if (temp_id >= 1 || temp_id <= 3)
+    {
+        LinkList temp, p, p1, p2;
+        temp = head;
+    }else
+    {
+        printf("您的输入有误！排序失败！");
+    }
 
-// }
+}
 
 // 统计学生个数
 int total(LinkList head)
