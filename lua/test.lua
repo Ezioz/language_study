@@ -134,41 +134,34 @@ addqueen({}, 1)
 -- site["key"] = "www.runoob.com"
 -- print(site["key"])
 -- print(site.key)
-
 -- if 0 then
 --     print("0 is true")
 -- end
-
-local function max(num1, num2)
-    if num1 > num2 then
-        return num1
-    elseif num1 == num2 then
-        print('None')
-    else
-        return num2
-    end
-end
-
-print('两值比较最大值为 ', max(10, 4))
-print('两值比较最大值为 ', max(5, 6))
-print('两值比较最大值为 ', max(10, 10))
-
+-- local function max(num1, num2)
+--     if num1 > num2 then
+--         return num1
+--     elseif num1 == num2 then
+--         print('None')
+--     else
+--         return num2
+--     end
+-- end
+-- print('两值比较最大值为 ', max(10, 4))
+-- print('两值比较最大值为 ', max(5, 6))
+-- print('两值比较最大值为 ', max(10, 10))
 -- lua中可以将函数作为参数传递给函数
 -- myprint = function(params)
 --     print('这是打印函数 - ##', params, '##')
 -- end
-
 -- function add(num1, num2, functionPrint)
 --     local result = num1 + num2
 --     functionPrint(result)
 -- end
 -- myprint(10)
 -- add(2, 5, myprint)
-
 -- myprint = function(params)
 --     print('This is print function - ##', params, '##')
 -- end
-
 -- function add(num1, num2, functionPrint)
 --     local result = num1 + num2
 --     functionPrint(result)
@@ -176,3 +169,102 @@ print('两值比较最大值为 ', max(10, 10))
 -- -- 个人感觉还是因为函数可以赋值给变量，变量加()便可以调用该函数了
 -- myprint(10)
 -- add(2, 5, myprint)
+-- lua的下标是从 1 开始的
+-- string.find()，返回匹配串“开始和结束的下标”
+-- s, e = string.find('www.runoob.com', 'runoob')
+-- print(s, e)
+-- function maximum(a)
+--     local mi = 1 --1
+--     local m = a[mi] -- 8
+--     for i, value in ipairs(a) do
+--         if value > m then
+--             mi = i -- mi为下标
+--             m = value -- m 为值
+--         end
+--     end
+--     return m, mi
+-- end
+-- test1, test2 = maximum({8, 10, 23, 12, 5})
+-- print(test1, test2)
+-- print(maximum({8, 10, 23, 12, 5}))
+-- 可变参数
+-- function add(...)
+--     local s = 0
+--     for index, value in ipairs(...) do
+--         s = s + value
+--     end
+--     return s
+-- end
+-- print(add(3, 4, 5, 6, 7))
+-- 上面例子一直执行失败，不知道为什么
+-- function average(...)
+--     result = 0
+--     local arg = {...}
+--     for index, value in ipairs(arg) do
+--         print(index, value)
+--         result = result + value
+--     end
+--     print("总共传入 " .. #arg .. " 个数")
+--     return result/#arg
+-- end
+-- print("平均值为 ", average(10, 5, 3, 4, 5, 6))
+-- 也可以通过select("#"", ...) 来获取可变参数的数量
+-- function average(...)
+--     result = 0
+--     local arg = {...}
+--     for index, value in ipairs(arg) do
+--         result = result + value
+--     end
+--     print("总共传入 " .. select("#", ...) .. " 个数")
+--     return result/select("#", ...)
+-- end
+-- print("平均值为 ", average(10, 5, 3, 4, 5, 6))
+-- function fwrite(fmt, ...)
+--     return io.write(string.format(fmt, ...))
+-- end
+-- fwrite("runoob\n")
+-- fwrite("%d%d\n", 1, 2)
+-- select('#', ...)，返回可变参数的长度
+-- select(n, ...) 返回从起点n开始到结束位置的所有参数列表
+-- function f(...)
+--     a = select(3, ...)
+--     print(a)
+--     print(select(3, ...))
+-- end
+-- f(0,1,2,3,4,5)
+-- -- 两者好像差别不大啊，~。~
+
+-- do
+--     function foo(...)
+--         for i = 1, select('#', ...), 1 do
+--            local arg = select(i, ...)
+--            print("arg", arg)
+--         end
+--     end
+--     foo(1, 2, 3, 4)
+-- end
+
+-- do
+--     function foo(...)
+--         for i = 1, select("#", ...), 1 do
+--             local arg = select(i, ...)
+--             print("arg", arg)
+--         end
+--     end
+--     foo(1, 2, 3, 4)
+-- end
+
+a = 21
+b = 10
+if a == b then
+    print('Line 1 -a 等于 b')
+else
+    print('Line 1 -a 不等于 b')
+end
+
+if a ~= b then
+    print('Line 1 -a 不等于 b')
+else
+    print('Line 1 -a 等于 b')
+end
+
