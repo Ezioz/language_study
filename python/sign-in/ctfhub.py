@@ -1,3 +1,11 @@
+'''
+Descripttion: 
+version: 
+Author: ahtoh
+Date: 2021-11-10 16:09:41
+LastEditors: ahtoh
+LastEditTime: 2021-11-30 16:57:40
+'''
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # author: ahtoh
@@ -11,7 +19,7 @@ def ctfhub(headers):
     data = {}
     ctfhub_headers = {
         'Host': 'api.ctfhub.com',
-        'Authorization': 'ctfhub_sessid=fag77ussfvchalr3q6494so0ale0l1tc',
+        'Authorization': '',
         'Origin': 'https://www.ctfhub.com',
         'Referer': 'https://www.ctfhub.com/',
         'Content-Length': '2',
