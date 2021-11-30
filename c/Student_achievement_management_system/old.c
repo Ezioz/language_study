@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-19 13:48:00
+ * @LastEditTime: 2021-11-30 16:22:54
  */
 /**
  * @description:
@@ -53,23 +53,22 @@ typedef struct Student
     struct Student *next;
 } STU;
 
-int Menu(void);            // 添加菜单
-STU *Create(int n, int m); // 创建链表并录入信息
-STU *Create1(int n, int m); // 
+int Menu(void);                                      // 添加菜单
+STU *Create(int n, int m);                           // 创建链表并录入信息
+STU *Create1(int n, int m);                          //
 void Print(STU *head, int n, int m);                 // 打印函数
 void AverSumofEveryStudent(STU *head, int n, int m); // 计算每门课程的总分和平均分
 void AverSumofEveryCourse(STU *head, int n, int m);  // 计算每个学生的总分和平均分
-STU *SortbyScore(STU *head, int n); // 按每个学生的总分由高到低排出名次表
-STU *SortbyScore1(STU *head, int n);  //按每个学生的总分由低到高排出名次表
-STU  *SortbyNum(STU *head); // 按学号由小到大排出成绩表
-
+STU *SortbyScore(STU *head, int n);                  // 按每个学生的总分由高到低排出名次表
+STU *SortbyScore1(STU *head, int n);                 //按每个学生的总分由低到高排出名次表
+STU *SortbyNum(STU *head);                           // 按学号由小到大排出成绩表
 
 int main(void)
 {
     system("chcp 65001");
     int n, m; // n 是学生数，m是课程数
     int i;
-    STU *head; // 定义头节点
+    STU *head;                         // 定义头节点
     head = (STU *)malloc(sizeof(LEN)); // 获取内存空间
     while (1)
     {
@@ -114,28 +113,28 @@ int main(void)
             head = SortbyScore1(head, n);
             Print(head, n, m);
             break;
-            // 
+            //
         case 6:
             system("cls");
             printf("Sort in ascending order by number:\n");
             head = SortbyNum(head);
             break;
-        // case 7:
-        //     system("cls");
-        //     printf("Sort in dictionary order by name:\n");
-        //     head = SortbyName(head, n);
-        //     Print(head, n, m);
-        //     break;
-        // case 8:
-        //     system("cls");
-        //     printf("Input the number you want to search:\n");
-        //     SearchbyNum(head, n, m);
-        //     break;
-        // case 9:
-        //     system("cls");
-        //     printf("Input the name you want to search:");
-        //     SearchbyName(head, n, m);
-        //     break;
+            // case 7:
+            //     system("cls");
+            //     printf("Sort in dictionary order by name:\n");
+            //     head = SortbyName(head, n);
+            //     Print(head, n, m);
+            //     break;
+            // case 8:
+            //     system("cls");
+            //     printf("Input the number you want to search:\n");
+            //     SearchbyNum(head, n, m);
+            //     break;
+            // case 9:
+            //     system("cls");
+            //     printf("Input the name you want to search:");
+            //     SearchbyName(head, n, m);
+            //     break;
 
         default:
             break;
@@ -243,9 +242,9 @@ void AverSumofEveryCourse(STU *head, int n, int m)
 STU *SortbyScore(STU *head, int n)
 {
     STU *endpt, *p, *p1, *p2; // endpt用于控制循环比较; p为临时指针变量
-    p1 = (STU *)malloc(LEN); // 为p1 开辟一段内存空间
-    p1->next = head;// 将p1 的指针域存储head的地址,此时p1 成为了链表的首结点,其数据域为空
-    head = p1; // 再让head 指向p1,此时 head 与 p1 指向同一地址
+    p1 = (STU *)malloc(LEN);  // 为p1 开辟一段内存空间
+    p1->next = head;          // 将p1 的指针域存储head的地址,此时p1 成为了链表的首结点,其数据域为空
+    head = p1;                // 再让head 指向p1,此时 head 与 p1 指向同一地址
     /*
     第一次外层for循环时,endpt=null,其不等于head成立
     进入内层for循环.将p指针指向与p1与head相同的地址,p1->next->next不等于endpt成立,因为endpt=null.进入if判断.此处功能是判断链表程度,如果成立,则说明只有一个结点
@@ -258,7 +257,7 @@ STU *SortbyScore(STU *head, int n)
     p = p1->next->next: p1->next->next 指向的是新的第三个结点,将其赋值给p
     循环结束后, p1 = p1->next: p1 指向第二个结点
      */
-    /* 
+    /*
     第二次内层for循环.如果 p1->next->next != endpt(null),成立,则跳出该循环
     endpt = p: 如果上式成立,则说明p指针指向的是最后一个结点;进入外层for循环 endpt != head 成立,进入内层for循环.
     p1->next->next != endpt 成立,因为此时endpt 的值不再为null,p1 指向第二个结点,endpt指向第三个结点,所以p1->next->next的值为null
@@ -322,7 +321,8 @@ STU *SortbyNum(STU *head)
     head->next = NULL;
     while (first != NULL)
     {
-        for (t = first, q = head; ((q != NULL) && (q->num < t->num)); p = q, q = q->next);
+        for (t = first, q = head; ((q != NULL) && (q->num < t->num)); p = q, q = q->next)
+            ;
         first = first->next;
         if (q == head)
         {
@@ -336,12 +336,6 @@ STU *SortbyNum(STU *head)
     }
     return head;
 }
-
-
-
-
-
-
 
 // 创建  链表
 /*
