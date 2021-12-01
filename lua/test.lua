@@ -517,26 +517,54 @@ addqueen({}, 1)
 -- print(r.length)
 -- r:printarea()
 -- -------------------------https://segmentfault.com/a/1190000022299831
-local people = {name = ''}
+-- local people = {name = ''}
+
+-- function people:say()
+--     print('people : ' .. self.name)
+-- end
+
+-- function people:new(name)
+--     local o = {name = name}
+--     setmetatable(o, {__index = self})
+--     return o
+-- end
+
+-- local teacher = {}
+-- function teacher:sayup()
+--     print('teacher : ' .. self.name)
+-- end
+-- setmetatable(teacher, {__index = people})
+
+-- local xiaohua = people:new('xiaohua')
+-- xiaohua:say()
+-- local xiaoming = teacher:new('xiaoming')
+-- xiaoming:say()
+-- xiaoming:sayup()
+-- ---------------------------------------------------
+
+people = {name = ''}
 
 function people:say()
     print('people : ' .. self.name)
 end
 
-function people:new(name)
+function people:new()
     local o = {name = name}
     setmetatable(o, {__index = self})
     return o
 end
 
 local teacher = {}
-function teacher:sayup()
-    print('teacher : ' .. self.name)
+function teacher.sayup(self)
+    print('teacher :' .. self.name)
 end
+
 setmetatable(teacher, {__index = people})
 
 local xiaohua = people:new('xiaohua')
 xiaohua:say()
 local xiaoming = teacher:new('xiaoming')
 xiaoming:say()
-xiaoming:sayup()
+xiaoming.sayup(teacher)
+
+-- self:https://zhuanlan.zhihu.com/p/115159195
