@@ -380,7 +380,6 @@ addqueen({}, 1)
 -- for k, v in ipairs(fruits) do
 --     print(k, v)
 -- end
-
 -- tab1 = {[1] = 2, [2] = 4, [3] = 80, [4] = 10}
 -- print(tab1[1])
 -- print('tab1 max-length: ', table.maxn(tab1))
@@ -401,12 +400,11 @@ addqueen({}, 1)
 -- print('tab1 len', #tab1)
 -- 模块
 -- package.path = './lua/?.lua'
-
 -- local m = require('module')
 -- print(m.constant)
 -- m.func1()
 -- m.func3()
---[[ 
+--[[ test
     require 文件加载策略
     1. 用于搜索lua文件的路径存放在全局变量 package.path 中
     2. 当lua启动后，会以环境变量 LUA_PATH 的值来初始环境变量，如果没有
@@ -416,5 +414,129 @@ addqueen({}, 1)
  ]]
 -- c 包，在使用前必须加载并连接，在大多数系统中，最容易实现的方式是通过动态链接库机制
 -- lua在一个叫 loadlib 函数内提供了所有的动态链接库功能，这个函数的两个参数：库的绝对路径和初始化函数
+-- 元表metatable，允许改变table 的行为。fuck!
+-- local testsr = 'hello test'
+-- local testtbl = {name = 'test', age = 6666}
+-- print('teststr metatable is ->', getmetatable(testsr))
+-- print('testtbl metatable is ->', getmetatable(testtbl))
+-- local testMetatbl = {}
+-- local finaltbl = setmetatable(testtbl, testMetatbl)
+-- dump(finaltbl, 'finaltbl ->')
+-- print('testtbl metatable is ->', getmetatable(testtbl))
+-- 元表看这个链接：https://www.bilibili.com/read/cv9624282
+-- xx = {23}
+-- print(xx[2])
+-- kk = {}
+-- kk = {__index = {[2] = 66}}
+-- setmetatable(xx, kk) -- 设定后一个表是前一个表的元表
+-- print(xx[2]) -- 并不改变xx表
+-- ---------------
+-- x = {12}
+-- kk = {
+--     __index = function(xx, aaaa)
+--         if aaaa == 2 then
+--             return 666
+--         end
+--     end
+-- }
+-- setmetatable(x, kk)
+-- print(x[2])
+-- ---------------
+-- x = {23, 5, 7}
+-- o = {66, -1, 2}
+-- k40 = {
+--     __add = function(tbl, tbl2)
+--         for i = 1, #tbl do
+--             tbl[i] = tbl[i] + tbl2[i]
+--         end
+--         return tbl
+--     end
+-- }
+-- setmetatable(x, k40)
+-- abc = x + o
+-- for i = 1, #abc do
+--     print(abc[i])
+-- end
+-- -------------------
+-- function table_maxn(t)
+--     local mn = 0
+--     for k, v in pairs(t) do
+--         if mn < k then
+--             mn = k
+--         end
+--     end
+--     return mn
+-- end
+-- mytable =
+--     setmetatable(
+--     {1, 2, 3},
+--     {
+--         __add = function(mytable, newtable)
+--             for i = 1, table_maxn(newtable) do
+--                 table.insert(mytable, table_maxn(mytable) + 1, newtable[i])
+--             end
+--             return mytable
+--         end
+--     }
+-- )
+-- secondtable = {4, 5, 6}
+-- mytable = mytable + secondtable
+-- for k, v in ipairs(mytable) do
+--     print(k, v)
+-- end
+-- 协同程序，一个具有多个线程的程序可以同时运行几个线程，而协同程序却需要彼此协作的运行。
+-- 暂且一放
+-- 面向对象
+--[[ oop
+    tab 描述对象的属性
+    function 用来表示方法
+    类，可以通过table + function 模拟出来
+ ]]
+-- account = {blance = 0}
+-- function account.withdraw(v)
+--     account.blance = account.blance - v
+-- end
+-- account.withdraw(100.00)
+-- 元类
+-- 这个例子需要再看看
+-- rectangle = {area = 0, length = 0, breadth = 0}
+-- function rectangle:new(o, length, breadth)
+--     o = o or {}
+--     setmetatable(o, self)
+--     self.__index = self
+--     self.length = length or 0
+--     self.breadth = breadth or 0
+--     self.area = length * breadth
+--     return o
+-- end
 
--- 元表，允许改变table 的行为。
+-- function rectangle:printarea()
+--     print("area is :", self.area)
+-- end
+-- r = rectangle:new(nil, 10, 20)
+-- print(r.length)
+-- r:printarea()
+-- -------------------------https://segmentfault.com/a/1190000022299831
+local people = {name = ''}
+
+function people:say()
+    print('people : ' .. self.name)
+end
+
+function people:new(name)
+    local o = {name = name}
+    setmetatable(o, {__index = self})
+    return o
+end
+
+local teacher = {}
+function teacher:sayup()
+    print('teacher : ' .. self.name)
+end
+setmetatable(teacher, {__index = people})
+
+local xiaohua = people:new('xiaohua')
+xiaohua:say()
+local xiaoming = teacher:new('xiaoming')
+xiaoming:say()
+xiaoming:sayup()
