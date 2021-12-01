@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-16 21:27:48
+ * @LastEditTime: 2021-12-01 17:06:49
  */
 
 #include <stdio.h>
@@ -14,6 +14,10 @@
 #include "Stu.h"
 
 #define welcome "欢迎使用图书管理系统"
+
+struct Stu *stu_head = NULL;
+struct Book *book_head = NULL;
+struct History *history_head = NULL;
 
 // **********学生管理系统**********
 void stu_management(void); // 学生管理系统
@@ -95,7 +99,4 @@ void add_stu(void)
         Sleep(1000);
         return;
     }
-    
-
-    
 }

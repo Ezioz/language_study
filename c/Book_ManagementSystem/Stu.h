@@ -4,8 +4,40 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:59:23
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-16 17:00:44
+ * @LastEditTime: 2021-12-01 17:01:00
  */
+
+#define PENALTY 0.1
+#define DEADLINE 60
+
+struct Date
+{
+    int year;
+    int month;
+    int day;
+};
+
+struct Book
+{
+    char issn[30];      // issn编号
+    char title[30];     // 书名
+    char publisher[20]; // 出版社
+    char author[20];    // 作者
+    double price;       // 价格
+    char available;     // 是否借走
+    char no[10];        // 被谁借走
+    struct Book *next;
+};
+
+struct History // 借阅历史
+{
+    char no[10];             // 学号
+    char issn[30];           // issn编号
+    struct Date borrow_date; // 借书时间
+    struct Date return_date; // 还书时间
+    double penalty;          // 违约金
+    struct History *next;
+};
 
 struct Stu
 {
