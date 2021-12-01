@@ -233,7 +233,6 @@ addqueen({}, 1)
 -- end
 -- f(0,1,2,3,4,5)
 -- -- 两者好像差别不大啊，~。~
-
 -- do
 --     function foo(...)
 --         for i = 1, select('#', ...), 1 do
@@ -243,7 +242,6 @@ addqueen({}, 1)
 --     end
 --     foo(1, 2, 3, 4)
 -- end
-
 -- do
 --     function foo(...)
 --         for i = 1, select("#", ...), 1 do
@@ -253,18 +251,170 @@ addqueen({}, 1)
 --     end
 --     foo(1, 2, 3, 4)
 -- end
+-- a = 21
+-- b = 10
+-- if a == b then
+--     print('Line 1 -a 等于 b')
+-- else
+--     print('Line 1 -a 不等于 b')
+-- end
+-- if a ~= b then
+--     print('Line 1 -a 不等于 b')
+-- else
+--     print('Line 1 -a 等于 b')
+-- end
+-- array = {}
+-- for i = -2, 2 do
+--     array[i] = i * 2
+-- end
+-- for i = -2, 2 do
+--     print(array[i])
+-- end
+-- array = {}
+-- for i = 1, 3 do
+--     array[i] = {}
+--     for j = 1, 3 do
+--         array[i][j] = i * j
+--     end
+-- end
+-- 3 就是个数限制，数组长度
+-- for i = 1, 3 do
+--     for j = 1, 3 do
+--         print(array[i][j])
+--     end
+-- end
+-- array = {"Lua", "Tutorial"}
+-- for i = 1, 2 do
+--     print(array[i])
+-- end
+-- 泛型for迭代器，pairs 返回（保存）迭代函数、状态常量、控制常量
+-- array = {'Google', 'Runoob'}
+-- for key, value in pairs(array) do
+--     print(key, value)
+-- end
+-- 无状态迭代器，不保留任何状态的迭代器
+-- function square(iterator, currentN)
+--     if currentN < iterator then
+--         currentN = currentN + 1
+--         return currentN, currentN * currentN
+--     end
+-- end
+-- for i, n in square, 3, 0 do
+--     print(i, n)
+-- end
+-- function square(v1, v2)
+--     if v1 < v2 then
+--         v1 = v1 + 1
+--         return v1, v1 * v1
+--     end
+-- end
+-- for i, n in square, 0, 3 do
+--     print(i, n)
+-- end
+-- function sqa(v1, v2)
+--     if v2 < v1 then
+--         v2 = v2 + 1
+--         return v2, v2 * v2
+--     end
+-- end
+-- for i, v in sqa, 3, 0 do
+--     print(i, v)
+-- end
+-- 迭代器先过一下
+-- mytable = {}
+-- mytable[1] = "Lua"
+-- print(mytable[1])
+-- mytable = nil
+-- print(mytable[1])
+-- mytable = {}
+-- print('mytable 的类型是 ', type(mytable))
+-- mytable[1] = 'Lua'
+-- mytable['wow'] = 'before'
+-- print('mytable 的索引为1 的元素为 ', mytable[1])
+-- print('mytable 的索引为wow 的元素为 ', mytable['wow'])
+-- alternatetable = mytable
+-- print('alternatetable 索引为 1 的元素是 ', alternatetable[1])
+-- print('mytable 索引为 wow 的元素是 ', alternatetable['wow'])
+-- alternatetable['wow'] = 'after'
+-- print('mytable 索引为 wow 的元素是 ', mytable['wow'])
+-- -- 释放变量
+-- alternatetable = nil
+-- print('alternatetable 是 ', alternatetable)
+-- -- mytable 仍然可以访问
+-- print("mytable 索引为 wow 的元素是 ", mytable["wow"])
+-- mytable = nil
+-- print("mytable 是 ", mytable)
+-- fruits = {'banana', 'origin', 'apple'}
+-- print('连接后的字符串 ', table.concat(fruits))
+-- print('连接后的字符串 ', table.concat(fruits, ', '))
+-- print('连接后的字符串 ', table.concat(fruits, ', ', 2, 3))
+-- table.insert(fruits, 'mango')
+-- print('4: ', fruits[4])
+-- table.insert(fruits, 2, 'grapes')
+-- print('2: ', fruits[4])
+-- print('last:', fruits[5])
+-- table.remove(fruits)
+-- print('last:', fruits[5])
+-- print('before----------------------')
+-- for k, v in ipairs(fruits) do
+--     print(k, v)
+-- end
+-- print('after-----------------------')
+-- table.sort(fruits)
+-- for k, v in ipairs(fruits) do
+--     print(k, v)
+-- end
+-- table.insert(fruits, 'zhu')
+-- print('4: ', fruits[4])
+-- table.insert(fruits, 2, 'jing')
+-- print('2: ', fruits[2])
+-- print('last: ', fruits[5])
+-- table.remove(fruits, 5)
+-- print('last: ', fruits[5])
+-- print('before-------------')
+-- for k, v in ipairs(fruits) do
+--     print(k, v)
+-- end
+-- print('after--------------')
+-- table.sort(fruits)
+-- for k, v in ipairs(fruits) do
+--     print(k, v)
+-- end
 
-a = 21
-b = 10
-if a == b then
-    print('Line 1 -a 等于 b')
-else
-    print('Line 1 -a 不等于 b')
-end
+-- tab1 = {[1] = 2, [2] = 4, [3] = 80, [4] = 10}
+-- print(tab1[1])
+-- print('tab1 max-length: ', table.maxn(tab1))
+-- -- 注：table.maxn 在5.2版本之后该方法不存在了，本人使用的是5.1.5
+-- function table_manx(t)
+--     local mn = nil
+--     for k, v in pairs(t) do
+--         if mn == nil then
+--             mn = v
+--         end
+--         if mn < v then
+--             mn = v
+--         end
+--     end
+--     return mn
+-- end
+-- print('tab1 max-length', table_manx(tab1))
+-- print('tab1 len', #tab1)
+-- 模块
+-- package.path = './lua/?.lua'
 
-if a ~= b then
-    print('Line 1 -a 不等于 b')
-else
-    print('Line 1 -a 等于 b')
-end
+-- local m = require('module')
+-- print(m.constant)
+-- m.func1()
+-- m.func3()
+--[[ 
+    require 文件加载策略
+    1. 用于搜索lua文件的路径存放在全局变量 package.path 中
+    2. 当lua启动后，会以环境变量 LUA_PATH 的值来初始环境变量，如果没有
+    找到该变量，则使用一个编译时定义的默认路径来初始化
+    3. 如果没有 LUA_PATH 这个环境变量，也可以自定义设置，在当前用户根目录下
+    打开 .profile 文件，xxxxx
+ ]]
+-- c 包，在使用前必须加载并连接，在大多数系统中，最容易实现的方式是通过动态链接库机制
+-- lua在一个叫 loadlib 函数内提供了所有的动态链接库功能，这个函数的两个参数：库的绝对路径和初始化函数
 
+-- 元表，允许改变table 的行为。
