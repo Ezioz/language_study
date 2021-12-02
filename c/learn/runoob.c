@@ -4,12 +4,20 @@
  * @Author: ahtoh
  * @Date: 2021-11-11 19:52:00
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-26 15:53:21
+ * @LastEditTime: 2021-12-02 22:47:48
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+int main(void)
+{
+    int i, a, b;
+    i = a = b = 1;
+    printf("%d %d %d \n", i, a, b);
+    return 0;
+}
 
 /*
 // 这是可以的
