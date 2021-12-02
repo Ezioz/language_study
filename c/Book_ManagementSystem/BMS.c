@@ -4,13 +4,14 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-01 17:06:49
+ * @LastEditTime: 2021-12-02 20:37:49
  */
 
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #include <windows.h>
+#include <stdlib.h>
 #include "Stu.h"
 
 #define welcome "欢迎使用图书管理系统"
@@ -77,7 +78,20 @@ void stu_management(void)
         case 'A':
             add_stu();
             break;
+        case 'B':
+            modify_stu();
+            break;
+        case 'C':
+            delete_stu();
+            break;
+        case 'D':
+            view_stu();
+            break;
+        case 'Q':
+            break;
         default:
+            puts("\n请输入对应操作的英文字母选项！");
+                system("pause");
             break;
         }
     } while (option != 'Q');

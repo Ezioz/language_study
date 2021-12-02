@@ -647,20 +647,21 @@ end
 -- 创建对象
 mysquare = square:new(nil, 10)
 mysquare:printarea()
-rectangle = shape:new()
--- 派生类方法new
-function rectangle:new(o, length, breadth)
-    o = o or shape:new(o)
-    setmetatable(o, self)
-    self.__index = self
-    self.area = length * breadth
-    return o
-end
+-- rectangle = shape:new()
+-- -- 派生类方法new
+-- function rectangle:new(o, length, breadth)
+--     o = o or shape:new(o)
+--     setmetatable(o, self)
+--     self.__index = self
+--     self.area = length * breadth
+--     return o
+-- end
 
--- 派生类方法 printarea
-function rectangle:printarea()
-    print('rect angle area is', self.area)
-end
--- 创建对象
-myrectangle = rectangle:new(nil, 10, 20)
-myrectangle:printarea()
+-- -- 派生类方法 printarea
+-- function rectangle:printarea()
+--     print('rect angle area is', self.area)
+-- end
+-- -- 创建对象
+-- myrectangle = rectangle:new(nil, 10, 20)
+-- myrectangle:printarea()
+-- 继承老有问题，真是见鬼了
