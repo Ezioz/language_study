@@ -509,7 +509,6 @@ addqueen({}, 1)
 --     self.area = length * breadth
 --     return o
 -- end
-
 -- function rectangle:printarea()
 --     print("area is :", self.area)
 -- end
@@ -518,53 +517,150 @@ addqueen({}, 1)
 -- r:printarea()
 -- -------------------------https://segmentfault.com/a/1190000022299831
 -- local people = {name = ''}
-
 -- function people:say()
 --     print('people : ' .. self.name)
 -- end
-
 -- function people:new(name)
 --     local o = {name = name}
 --     setmetatable(o, {__index = self})
 --     return o
 -- end
-
 -- local teacher = {}
 -- function teacher:sayup()
 --     print('teacher : ' .. self.name)
 -- end
 -- setmetatable(teacher, {__index = people})
-
 -- local xiaohua = people:new('xiaohua')
 -- xiaohua:say()
 -- local xiaoming = teacher:new('xiaoming')
 -- xiaoming:say()
 -- xiaoming:sayup()
 -- ---------------------------------------------------
-
-people = {name = ''}
-
-function people:say()
-    print('people : ' .. self.name)
+-- people = {name = ''}
+-- function people:say()
+--     print('people : ' .. self.name)
+-- end
+-- function people:new()
+--     local o = {name = name}
+--     setmetatable(o, {__index = self})
+--     return o
+-- end
+-- local teacher = {}
+-- function teacher.sayup(self)
+--     print('teacher :' .. self.name)
+-- end
+-- setmetatable(teacher, {__index = people})
+-- local xiaohua = people:new('xiaohua')
+-- xiaohua:say()
+-- local xiaoming = teacher:new('xiaoming')
+-- xiaoming:say()
+-- xiaoming.sayup(teacher)
+-- self:https://zhuanlan.zhihu.com/p/115159195
+-- ---------------------
+-- local t = {a = 1, b = 2}
+-- function t:add()
+--     return (self.a + self.b)
+-- end
+-- function t.sub(self)
+--     return (self.a - self.b)
+-- end
+-- print(t.add(t))
+-- print(t:sub())
+-- local ta = {a = 1, b = 2}
+-- function ta.add(self)
+--     return (self.a + self.b)
+-- end
+-- print(ta.add(t))
+-- local tb = {a = 1, b = 2}
+-- function tb:add()
+--     return (self.a + self.b)
+-- end
+-- print(tb:add())
+--[[ 冒号(:)的作用有两个
+1. 对于方法定义来说，会增加一个额外的隐藏形参（self）
+2. 对于方法调用来说，会增加一个额外的实参（表自身）
+]]
+-- rectangle = {area = 0, length = 0, breadth = 0}
+-- function rectangle:new(o, length, breadth)
+--     o = o or {}
+--     setmetatable(o, self)
+--     self.__index = self
+--     self.length = length or 0
+--     self.breadth = breadth or 0
+--     self.area = length * breadth
+--     return o
+-- end
+-- function rectangle:printarea()
+--     print('area is ', self.area)
+-- end
+-- r = rectangle:new(nil, 10, 20)
+-- print(r.length)
+-- r.printarea(r)
+-- 元类
+-- shape = {area = 0}
+--
+-- function shape:new(o, side)
+--     o = o or {}
+--     setmetatable(o, self)
+--     self.__index = self
+--     self.side = side or 0
+--     self.area = side * side
+--     return o
+-- end
+-- function shape:printarea()
+--     print('area is : ', self.area)
+-- end
+-- r = shape:new(nil, 10)
+-- r:printarea()
+-- 继承----------------------------------------------
+-- 元类
+shape = {area = 0}
+-- 基础类方法 new
+function shape:new(o, side)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.side = side or 0
+    self.area = side * side
+    return o
 end
+-- 基础方法类 printarea
+function shape:printarea()
+    print('area is : ', self.area)
+end
+-- 创建对象
+myshape = shape:new(nil, 10)
+myshape:printarea()
 
-function people:new()
-    local o = {name = name}
-    setmetatable(o, {__index = self})
+square = shape:new()
+-- 派生类方法 new
+function square:new(o, side)
+    o = o or shape:new(o, side)
+    setmetatable(o, self)
+    self.__index = self
+    return o
+end
+-- 派生类方法 printarea
+function square:printarea()
+    print('zheng area is ', self.area)
+end
+-- 创建对象
+mysquare = square:new(nil, 10)
+mysquare:printarea()
+rectangle = shape:new()
+-- 派生类方法new
+function rectangle:new(o, length, breadth)
+    o = o or shape:new(o)
+    setmetatable(o, self)
+    self.__index = self
+    self.area = length * breadth
     return o
 end
 
-local teacher = {}
-function teacher.sayup(self)
-    print('teacher :' .. self.name)
+-- 派生类方法 printarea
+function rectangle:printarea()
+    print('rect angle area is', self.area)
 end
-
-setmetatable(teacher, {__index = people})
-
-local xiaohua = people:new('xiaohua')
-xiaohua:say()
-local xiaoming = teacher:new('xiaoming')
-xiaoming:say()
-xiaoming.sayup(teacher)
-
--- self:https://zhuanlan.zhihu.com/p/115159195
+-- 创建对象
+myrectangle = rectangle:new(nil, 10, 20)
+myrectangle:printarea()
