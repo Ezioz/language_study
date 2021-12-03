@@ -84,10 +84,10 @@ LastEditTime: 2021-12-02 14:07:30
 
 function add(...)
     local c = 0
-    for i, v in ipairs {...} do -- 注意，此处ipairs 后是 {} 
+    for i, v in ipairs {...} do
         c = c + v
     end
     return c
 end
 
-print(add(3, 4, 5, 6, 7))
+print(add(1, 2, 3, 4, 5, 6))
