@@ -4,6 +4,14 @@ version:
 Author: ahtoh
 Date: 2021-12-02 14:07:29
 LastEditors: ahtoh
+LastEditTime: 2021-12-03 09:10:40
+--]]
+--[[
+Descripttion: 
+version: 
+Author: ahtoh
+Date: 2021-12-02 14:07:29
+LastEditors: ahtoh
 LastEditTime: 2021-12-02 14:07:30
 --]]
 -- x = {23, 5, 7}
@@ -43,27 +51,43 @@ LastEditTime: 2021-12-02 14:07:30
 --     print(k, v)
 -- end
 -- --------------------------------------------------
+-- local ffi = require('D:/Program Files/Binaries-LuaDist-batteries-0.9.8-Windows-x86/bin/libffi.dll')
+-- ffi.cdef [[
+--     void Sleep(int ms);
+--     int poll(struct pollfd *fds, unsigned long nfds, int timeout);
+-- ]]
+-- local sleep
+-- if ffi.os == 'Windows' then
+--     function sleep(s)
+--         ffi.C.Sleep(s * 1000)
+--     end
+-- else
+--     function sleep(s)
+--         ffi.C.poll(nil, 0, s * 1000)
+--     end
+-- end
+-- for i = 1, 160 do
+--     io.write('.')
+--     io.flush()
+--     sleep(0.01)
+-- end
+-- io.write('\n')
 
-local ffi = require('D:/Program Files/Binaries-LuaDist-batteries-0.9.8-Windows-x86/bin/libffi.dll')
-ffi.cdef [[
-    void Sleep(int ms);
-    int poll(struct pollfd *fds, unsigned long nfds, int timeout);
-]]
+-- function add(...)
+--     local s = 0
+--     for i, v in ipairs {...} do
+--         s = s + v
+--     end
+--     return s
+-- end
+-- print(add(3, 4, 5, 6, 7))
 
-local sleep
-if ffi.os == 'Windows' then
-    function sleep(s)
-        ffi.C.Sleep(s * 1000)
+function add(...)
+    local c = 0
+    for i, v in ipairs {...} do -- 注意，此处ipairs 后是 {} 
+        c = c + v
     end
-else
-    function sleep(s)
-        ffi.C.poll(nil, 0, s * 1000)
-    end
+    return c
 end
 
-for i = 1, 160 do
-    io.write('.')
-    io.flush()
-    sleep(0.01)
-end
-io.write('\n')
+print(add(3, 4, 5, 6, 7))
