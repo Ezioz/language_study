@@ -4,11 +4,11 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:59:23
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-01 17:01:00
+ * @LastEditTime: 2021-12-04 20:36:15
  */
 
-#define PENALTY 0.1
-#define DEADLINE 60
+#define PENALTY 0.1 // 罚金 0.1 元每天
+#define DEADLINE 60 // 最长借书时间60天
 
 struct Date
 {
