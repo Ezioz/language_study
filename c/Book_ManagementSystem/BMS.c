@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-04 21:37:24
+ * @LastEditTime: 2021-12-05 20:57:26
  */
 
 #include <stdio.h>
@@ -15,15 +15,24 @@
 #include "Stu.h"
 
 #define welcome "欢迎使用图书管理系统"
-
-struct Stu *stu_head = NULL; // 学生头指针
+// *************全局变量*************************
+struct Stu *stu_head = NULL;         // 学生头指针
+struct Book *book_head = NULL;       // 书本头指针
+struct History *history_head = NULL; // 历史头指针
 
 char upper_getchar(void);                                            // 修改选项为大写
 void add_stu(void);                                                  // 添加学生信息
 int search_stu(char no[], struct Stu **stu_p1, struct Stu **stu_p2); // 校验学生记录是否已存在
 
+// **************学生管理系统********************
+void stu_management(void); // 学生管理系统
+
+// ************读写*********************
+void write_file(void); // 写文件并释放内存空间
+
 int main(void)
 {
+    system("chcp 65001");
     char option;
     do
     {
@@ -153,3 +162,82 @@ int search_stu(char no[], struct Stu **stu_p1, struct Stu **stu_p2)
         return flag;
     }
 }
+
+// 学生管理系统
+void stu_management(void)
+{
+    char option;
+    system("cls");
+    do
+    {
+        puts("**********学生信息管理*************");
+        puts("A 添加学生信息");
+        puts("B 修改学生个人信息");
+        puts("C 删除学生个人信息");
+        puts("D 查看所有学生个人信息");
+        puts("Q 返回图书管理系统");
+        puts("请输入选项：按回车键确认，大小写均可");
+        puts("所有信息存放在D盘");
+        switch (option = upper_getchar())
+        {
+        case 'A':
+            add_stu();
+            break;
+
+        default:
+            break;
+        }
+        system("cls");
+    } while (option != 'Q');
+}
+
+// 写文件
+void write_file(void)
+{
+    FILE *fp;
+    struct Stu *stu_p1 = NULL;
+    struct Stu *stu_p2 = NULL;
+    struct Book *book_p1 = NULL;
+    struct Book *book_p2 = NULL;
+    struct History *history_p1 = NULL;
+    struct History *history_p2 = NULL;
+    fp = fopen("stu.txt", "wb");
+    if (stu_head != NULL)
+    {
+        stu_p1 = stu_p2 = stu_head;
+        while (stu_p2 != NULL)
+        {
+            stu_p1 = stu_p2;
+            fwrite(stu_p1, sizeof(struct Stu), 1, fp);
+            stu_p2 = stu_p1->next;
+        }
+    }
+    fclose(fp);
+    // 写图书文件
+    fp = fopen("book.txt", "wb");
+    if (book_head != NULL)
+    {
+        book_p1 = book_p2 = book_head;
+        while (book_p2 != NULL)
+        {
+            book_p1 = book_p2;
+            fwrite(book_p1, sizeof(struct Book), 1, fp);
+            book_p2 = book_p1->next;
+        }
+    }
+    fclose(fp);
+    //写历史文件
+    fp = fopen("history.txt", "wb");
+    if (history_head != NULL)
+    {
+        history_p1 = history_p2 = history_head;
+        while (history_p2 != NULL)
+        {
+            history_p1 = history_p2;
+            fwrite(history_p1, sizeof(struct History), 1, fp);
+            history_p2 = history_p1->next;
+        }
+    }
+    fclose(fp);
+}
+
