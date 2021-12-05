@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-05 20:57:26
+ * @LastEditTime: 2021-12-05 21:50:57
  */
 
 #include <stdio.h>
@@ -32,9 +32,9 @@ void write_file(void); // 写文件并释放内存空间
 
 int main(void)
 {
-    system("chcp 65001");
-    char option;
-    do
+    system("chcp 65001"); // 设置终端语言
+    char option;          // 定义一个变量option用来接收用户的选项
+    do                    // 使用do...while循环，肯定是先执行一次嘛
     {
         puts("图书管理系统");
         puts("A 学生信息管理");
@@ -77,14 +77,14 @@ char upper_getchar(void)
 // 添加学生信息
 void add_stu(void)
 {
-    char option; // 选项
-    struct Stu *stu_p1 = NULL;
-    struct Stu *stu_p2 = NULL;
-    struct Stu stu;
+    char option;               // 选项
+    struct Stu *stu_p1 = NULL; // 定义结构体变量指针p1
+    struct Stu *stu_p2 = NULL; // 定义结构体变量指针p1
+    struct Stu stu;            // 定义结构体变量 stu
 
     puts("请输入学号:");
     printf("学号：___\b\b\b");
-    scanf("%s", stu.no);
+    scanf("%s", stu.no); // 虽然是学号，但由于是char类型的，所以不需要取地址符&
     puts("查找中....");
     if (search_stu(stu.no, &stu_p1, &stu_p2) == 1)
     {
@@ -135,6 +135,7 @@ void add_stu(void)
 }
 
 // 校验学生记录是否已存在
+// 传入的参数有学号，p1 指针的地址，p2 指针的地址
 int search_stu(char no[], struct Stu **stu_p1, struct Stu **stu_p2)
 {
     int flag = 0;
@@ -163,7 +164,12 @@ int search_stu(char no[], struct Stu **stu_p1, struct Stu **stu_p2)
     }
 }
 
-// 学生管理系统
+/* 学生管理系统
+第一个功能是学生管理系统，其实这个系统跟图书管理系统有点像了，也是一个小系统，会有很多的功能。
+添加/修改/删除 学生信息
+查看所有学生个人信息
+返回图书管理系统
+*/
 void stu_management(void)
 {
     char option;
@@ -240,4 +246,3 @@ void write_file(void)
     }
     fclose(fp);
 }
-
