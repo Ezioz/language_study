@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-05 21:50:57
+ * @LastEditTime: 2021-12-06 16:45:34
  */
 
 #include <stdio.h>
@@ -29,6 +29,7 @@ void stu_management(void); // 学生管理系统
 
 // ************读写*********************
 void write_file(void); // 写文件并释放内存空间
+void read_file(void);  // 申请内存空间并读文件
 
 int main(void)
 {
@@ -139,7 +140,7 @@ void add_stu(void)
 int search_stu(char no[], struct Stu **stu_p1, struct Stu **stu_p2)
 {
     int flag = 0;
-    *stu_p1 = *stu_p2 = stu_head;
+    *stu_p1 = *stu_p2 = stu_head; // 此时三个值均为NULL
     while (*stu_p2 != NULL)
     {
         if (strcmp(no, (*stu_p2)->no) == 1)
@@ -245,4 +246,83 @@ void write_file(void)
         }
     }
     fclose(fp);
+}
+
+void read_file(void)
+{
+    FILE *fp;
+    struct Stu *stu_p1 = NULL;
+    struct Stu *stu_p2 = NULL;
+    struct Book *book_p1 = NULL;
+    struct Book *book_p2 = NULL;
+    struct History *history_p1 = NULL;
+    struct History *history_p2 = NULL;
+
+    if ((fp = fopen("stu.txt", "rb")) == NULL)
+    {
+        fp = fopen("stu.txt", "wb+");
+    }
+    stu_head = stu_p1 = stu_p2 = (struct Stu *)malloc(sizeof(struct Stu));
+    fread(stu_p1, sizeof(struct Stu), 1, fp);
+    while (!feof(fp))
+    {
+        stu_p1 = stu_p2;
+        stu_p2 = (struct Stu *)malloc(sizeof(struct Stu));
+        stu_p1->next = stu_p2;
+        fread(stu_p2, sizeof(struct Stu), 1, fp);
+    }
+    if (stu_p1 == stu_p2)
+    {
+        stu_head = NULL;
+    }
+    else
+    {
+        stu_p1->next = NULL;
+    }
+    free(stu_p2);
+    fclose(fp);
+
+    if ((fp = fopen("book.txt", "rb")) == NULL)
+    {
+        fp = fopen("book.txt", "wb+");
+    }
+    book_head = book_p1 = book_p2 = (struct Book *)malloc(sizeof(struct Book));
+    fread(book_p1, sizeof(struct Book), 1, fp);
+    while (!feof(fp))
+    {
+        book_p1 = book_p2;
+        book_p2 = (struct Book *)malloc(sizeof(struct Book));
+        book_p1->next = book_p2;
+        fread(book_p2, sizeof(struct Book), 1, fp);
+    }
+    if (book_p1 == book_p2)
+    {
+        book_head = NULL;
+    }
+    else
+    {
+        book_p1->next = NULL;
+    }
+    free(book_p2);
+    fclose(fp);
+    // 读借阅历史文件
+    if ((fp = fopen("history.txt", "rb")) == NULL)
+    {
+        fp = fopen("history.txt", "wb+");
+        history_head = history_p1 = history_p2 = (struct History *)malloc(sizeof(struct History));
+        fread(history_p1, sizeof(struct History), 1, fp);
+        while (!feof(fp))
+        {
+            history_p1 = history_p2;
+            history_p2 = (struct History *)malloc(sizeof(struct History));
+            history_p1->next = history_p2;
+            fread(history_p2, sizeof(struct History), 1, fp);
+        }
+        if (history_p1 == history_p2)
+            history_head = NULL;
+        else
+            history_p1->next = NULL;
+        free(history_p2);
+        fclose(fp);
+    }
 }
