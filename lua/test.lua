@@ -602,7 +602,7 @@ addqueen({}, 1)
 -- function shape:new(o, side)
 --     o = o or {}
 --     setmetatable(o, self)
---     self.__index = self
+--     self.__index = self -- 相当于 o = setmetatable(o, {__index = self})
 --     self.side = side or 0
 --     self.area = side * side
 --     return o
