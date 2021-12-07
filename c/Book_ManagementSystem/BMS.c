@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-11-16 16:30:34
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-06 17:28:38
+ * @LastEditTime: 2021-12-07 09:36:37
  */
 
 #include <stdio.h>
@@ -326,3 +326,4 @@ void read_file(void)
         fclose(fp);
     }
 }
+test
