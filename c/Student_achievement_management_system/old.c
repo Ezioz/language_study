@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-11-30 16:22:54
+ * @LastEditTime: 2021-12-07 23:01:01
  */
 /**
  * @description:
@@ -197,10 +197,9 @@ STU *Create(int n, int m)
 // 计算每门课程的总分和平均分
 void AverSumofEveryStudent(STU *head, int n, int m) // m为课程数量
 {
-    STU *p = head;
-    // char ch; 该函数压根就没用到这个
-    float sum; // sum 统计的是课程总分
-    int j = 1; // j 的功能是输出当前是第几门课程
+    STU *p = head; // char ch; 该函数压根就没用到这个
+    float sum;     // sum 统计的是课程总分
+    int j = 1;     // j 的功能是输出当前是第几门课程
     if (head != NULL)
     {
         for (int i = 0; i < m; i++) // i 代表的是当前是第几门课程
@@ -289,8 +288,8 @@ STU *SortbyScore(STU *head, int n)
 STU *SortbyScore1(STU *head, int n)
 {
     STU *endpt, *p, *p1, *p2;
-    p1 = (STU *)malloc(sizeof(LEN));
-    p1->next = head;
+    p1 = (STU *)malloc(sizeof(LEN));// 动态分配内存空间
+    p1->next = head; // 
     head = p1;
     for (endpt = NULL; endpt != head; endpt = p)
     {
