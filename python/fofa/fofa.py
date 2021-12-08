@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-07 23:26:03
 LastEditors: ahtoh
-LastEditTime: 2021-12-07 23:37:37
+LastEditTime: 2021-12-08 08:56:27
 '''
 
 #-*- coding:utf-8 -*-
@@ -26,7 +26,7 @@ def Args():
         return args
 
 def main():
-    
+    pass
 
 if __name__ == '__main__':
     main()
