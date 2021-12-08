@@ -2,6 +2,22 @@
 Descripttion: 
 version: 
 Author: ahtoh
+Date: 2021-12-07 09:35:53
+LastEditors: ahtoh
+LastEditTime: 2021-12-08 10:45:18
+--]]
+--[[
+Descripttion: 
+version: 
+Author: ahtoh
+Date: 2021-12-07 09:35:53
+LastEditors: ahtoh
+LastEditTime: 2021-12-08 10:42:43
+--]]
+--[[
+Descripttion: 
+version: 
+Author: ahtoh
 Date: 2021-12-02 14:07:29
 LastEditors: ahtoh
 LastEditTime: 2021-12-03 09:10:40
@@ -72,7 +88,6 @@ LastEditTime: 2021-12-02 14:07:30
 --     sleep(0.01)
 -- end
 -- io.write('\n')
-
 -- function add(...)
 --     local s = 0
 --     for i, v in ipairs {...} do
@@ -81,6 +96,14 @@ LastEditTime: 2021-12-02 14:07:30
 --     return s
 -- end
 -- print(add(3, 4, 5, 6, 7))
+-- function add(...)
+--     local c = 0
+--     for i, v in ipairs {...} do
+--         c = c + v
+--     end
+--     return c
+-- end
+-- print(add(1, 2, 3, 4, 5, 6))
 
 function add(...)
     local c = 0
@@ -89,5 +112,4 @@ function add(...)
     end
     return c
 end
-
-print(add(1, 2, 3, 4, 5, 6))
+print(add(1, 2, 4, 5, 6, 7))
