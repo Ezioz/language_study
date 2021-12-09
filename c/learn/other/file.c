@@ -4,11 +4,33 @@
  * @Author: ahtoh
  * @Date: 2021-11-25 09:59:24
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-03 17:08:35
+ * @LastEditTime: 2021-12-09 11:14:24
  */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+int main(void)
+{
+    int a = 4, b = 20, c = 2;
+    // a *= b + c; // a = a * (b + c) 220
+    // a = b = 10;
+    // a = (b = 1) + 4; // a 5 b 1
+    // a += a -= a * a; // -24
+    // printf("%d", a == 0 && b != 0 || a != 0 && b == 0); // 1. b!=0, a!=0 2. a==0 b==0 3. 与或
+    printf("%d", a < b ? a + b : a < c ? a
+                                       : c); // 24
+    return 0;
+}
+
+// int main(void)
+// {
+//     int a = 1, b = 4, c = 2;
+//     float x = 10.5, y = 4.2, z;
+//     z = (a + b) / c + (int)y % c * 1.2 + x;
+//     printf("%f", z);
+//     return 0;
+// }
 
 // int main(void)
 // {
@@ -150,4 +172,3 @@ int main(void)
 
 //     return 0;
 // }
-
