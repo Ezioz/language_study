@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-09 16:59:34
+ * @LastEditTime: 2021-12-09 22:58:34
  */
 #include <stdio.h>
 #include <string.h>
@@ -248,6 +248,17 @@ int main(void)
 /* 猴子吃桃子问题。猴子第一天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第二天早上又将剩下的桃子吃棹一半，
 又多吃了一个。以后每天早上都吃了昨天的一半零一个。到第10 天早上一看，只剩下一个桃子了。求第一天共摘下多少个桃子。*/
 
+// int main(void)
+// {
+//     int x = 0, y = 1;
+//     for (int i = 9; i > 0; i--)
+//     {
+//         x = 2 * (y + 1);
+//         y = x;
+//     }
+//     printf("%d\n", x);
+// }
+
 int main(void)
 {
     int x = 0, y = 1;
@@ -256,5 +267,5 @@ int main(void)
         x = 2 * (y + 1);
         y = x;
     }
-    printf("%d\n", x);
+    printf("%d", y);
 }
