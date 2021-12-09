@@ -4,11 +4,11 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-09 16:20:20
+ * @LastEditTime: 2021-12-09 16:59:34
  */
 #include <stdio.h>
 #include <string.h>
-
+#include <math.h>
 /*
 // 输入若干个字符，分别统计数字字符和字母字符的个数，当输入换行时输出统计结果
 
@@ -89,7 +89,7 @@ int main(void)
 // }
 
 /* 输入某年某月某日，判断这一天是这一年第几个星期中的第几天 */
-
+/*
 int main(void)
 {
     int year, month, february, day, sum = 0;
@@ -127,4 +127,134 @@ int main(void)
     //     printf("1");
     // }
     // return 0;
+}
+*/
+
+/* 斐波那契 */
+/*
+int main(void)
+{
+    int i, t, f1 = 1, f2 = 1;
+    printf("%d %d ", 1, 1);
+    while (i <= 20)
+    {
+        t = f1 + f2;
+        printf("%d ", t);
+        if (i % 5 == 0)
+            printf("\n");
+        f1 = f2;
+        f2 = t;
+        i++;
+    }
+}
+*/
+
+/* 将一个正整数分解质因数 90 = 2 * 3 * 3 * 5 */
+/*
+int main(void)
+{
+    int n, i;
+    printf("\n please input a number:\n");
+    scanf("%d", &n);
+    printf("%d = ", n);
+    for (int i = 2; i <= n; i++)
+    {
+        while (n != i)
+        {
+            if (n % i == 0)
+            {
+                printf("%d * ", i);
+                n = n / i;
+            }
+            else
+                break;
+        }
+    }
+    printf("%d", n);
+    return 0;
+}
+*/
+/*
+int main(void)
+{
+    int i;                       //它的作用域对整个函数有用
+    for (int i = 0; i < 10; i++) // 如果在for循环中定义，它的作用域只在for循环中有用
+    {
+        printf("1\n");
+    }
+    printf("xx = %d", i);
+}
+*/
+
+/* 判断一个数是否为素数 */
+/*
+int main(void)
+{
+    int n, m, flag = 0;
+    scanf("%d", &n);
+    m = sqrt(n);
+    for (int i = 2; i <= m; i++)
+    {
+        if (n % i == 0)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag)
+    {
+        printf("%d is not a prime number", n);
+    }
+    else
+    {
+        printf("%d is a prime number", n);
+    }
+}
+*/
+
+/* 用辗转相除法对输入的两个正整数m和n求其最大公约数和最小公倍数 */
+/*
+int main(void)
+{
+    int m, n, a, b, r, t;
+    printf("输入两个正整数:");
+    scanf("%d, %d", &m, &n);
+    a = m;
+    b = n;
+    if (m > 0 && n > 0)
+    {
+        if (m < n)
+        {
+            t = m;
+            m = n;
+            n = t;
+        }
+        r = m % n;
+        while (r != 0)
+        {
+            m = n;
+            n = r;
+            r = m % n;
+        }
+        printf("%d and %d maximum is %d\n", a, b, n);
+    }
+    else
+    {
+        printf("Error\n");
+    }
+    printf("%d is %d lowest is %d\n", a, b, a * b / n);
+}
+*/
+/* 猴子吃桃子问题。猴子第一天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第二天早上又将剩下的桃子吃棹一半，
+又多吃了一个。以后每天早上都吃了昨天的一半零一个。到第10 天早上一看，只剩下一个桃子了。求第一天共摘下多少个桃子。*/
+
+int main(void)
+{
+    int x = 0, y = 1;
+    for (int i = 9; i > 0; i--)
+    {
+        x = 2 * (y + 1);
+        y = x;
+    }
+    printf("%d\n", x);
 }
