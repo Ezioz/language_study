@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-09 22:58:34
+ * @LastEditTime: 2021-12-10 17:08:12
  */
 #include <stdio.h>
 #include <string.h>
@@ -259,13 +259,167 @@ int main(void)
 //     printf("%d\n", x);
 // }
 
+// int main(void)
+// {
+//     int x = 0, y = 1;
+//     for (int i = 9; i > 0; i--)
+//     {
+//         x = 2 * (y + 1);
+//         y = x;
+//     }
+//     printf("%d", y);
+// }
+
+/* 输出100以内所有素数 */
+
+// int main(void)
+// {
+//     int k = 0, j;
+//     for (int i = 2; i < 100; i++)
+//     {
+//         for (j = 2; j < i; j++)
+//         {
+//             if (i % j == 0)
+//             {
+//                 break;
+//             }
+//         }
+//         if (i == j)
+//         {
+//             k++;
+//             printf("%4d ", i);
+//             if (k % 5 == 0)
+//             {
+//                 printf("\n");
+//             }
+//         }
+//     }
+// }
+
+/* 输入一个字符串，当字符串没有超过10个字符时，输出没有超过10个字符的内容；当超过时，输出超过了10个字符的内容 */
+// 好奇怪，为啥两个都输出啊
+// int main(void)
+// {
+//     char str[100];
+//     printf("char char char\n");
+//     scanf("%s", str);
+//     if (strlen(str) < 10)
+//     {
+//         printf("%d\n", strlen(str));
+//         goto Label1;
+//     }
+//     else
+//     {
+//         printf("111\n");
+//         goto Label2;
+//     }
+// Label1:
+//     printf("&lt; 10\n");
+// Label2:
+//     printf("&gt; 10");
+//     return 0;
+// }
+
+/* 有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少 */
+
+// int main()
+// {
+//     int i, j, k, t;
+//     int count = 0;
+//     printf("they are as follows:\n");
+//     for (t = 0, i = 1; i <= 4; i++)       //百位数字有4种选择
+//         for (j = 1; j <= 4; j++)          //十位数字有3种选择
+//             if (j != i)                   //遇到十位数字等于百位数字时跳过
+//                 for (k = 1; k <= 4; k++)  //个位数字只有2种选择了
+//                     if (k != i && k != j) //个位数字与十位或百位数字相等时跳过
+//                     {
+//                         count++;
+//                         printf(++t % 10 ? "%4d" : "%4d\n", i * 100 + j * 10 + k); //输出该三位数
+//                     }
+//     if (t % 10)
+//         printf("\n");
+//     printf("have %d number", count);
+//     return 0;
+// }
+
+/* 输入10个整数存入一维数组，按逆序重新存放后再输出 */
+
+// int main(void)
+// {
+//     int a[10] = {0};
+//     for (int i = 0; i < 10; i++)
+//     {
+//         scanf("%d", &a[i]);
+//     }
+//     printf("---------\n");
+//     for (int i = 9; i >= 0; i--)
+//     {
+//         printf("%d ", a[i]);
+//     }
+// }
+
+/* 打印杨辉三角 */
+
+/* 一个数如果恰好等于它的因子之和，则这个数就称为“完数”。例如6=1+2+3。编程找出1000以内的所有完数。*/
+/* 输入两个数组（数组元素个数自定），输出在两个数组中都不出现的元素。*/
+
+// int main(void)
+// {
+//     char name[10];
+//     char test[] = "string";
+//     strncpy(name, test, 3);
+//     printf("%s", name);
+//     return 0;
+// }
+
+/* 从键盘输入10个字符串，并按照从小到大的顺序输出 */
+/*
 int main(void)
 {
-    int x = 0, y = 1;
-    for (int i = 9; i > 0; i--)
+    char a[10][80], c[80];
+    int k = 0;
+    printf("input 10 words:\n");
+    for (int i = 0; i < 10; i++)
     {
-        x = 2 * (y + 1);
-        y = x;
+        gets(a[i]);
     }
-    printf("%d", y);
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = i + 1; j < 10; j++) // 不断进行对比排序，确定k的值，也就是在字符中的位置
+        {
+            if (strcmp(a[j], a[k]) < 0)
+            {
+                k = j;
+            }
+        }
+        if (k != i)
+        {
+            strcpy(c, a[i]);
+            strcpy(a[i], a[k]);
+            strcpy(a[k], c);
+        }
+    }
+    printf("--------------");
+    for (int i = 0; i < 10; i++)
+    {
+        puts(a[i]);
+    }
 }
+*/
+
+/* 编写程序实现输出一个字符串后，将字符串的内容颠倒过来。*/
+/*
+int main(void)
+{
+    char str[30];
+    gets(str);
+    for (int i = 0; i <= strlen(str); i++)
+    {
+        printf("%c", str[(strlen(str) - i)]);
+
+    }
+    return 0;
+}
+*/
+
+
