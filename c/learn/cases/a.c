@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-13 14:41:07
+ * @LastEditTime: 2021-12-13 14:53:01
  */
 #include <stdio.h>
 #include <string.h>
@@ -586,3 +586,11 @@ int main(void)
 //     a = 10; // 此处不可修改
 //     return a+a;
 // }
+
+int main(int argc, char const *argv[])
+{
+    char ch[100] = "china";
+    char he[10] = "hello";
+    printf("%s", strcat(ch, he));
+    return 0;
+}

@@ -12,27 +12,6 @@
             "projectName": "languange_study_9e3bc643"
         },
         {
-            "type": "java",
-            "name": "Launch Number",
-            "request": "launch",
-            "mainClass": "Number",
-            "projectName": "language_study_d97e0db"
-        },
-        {
-            "type": "java",
-            "name": "Launch First",
-            "request": "launch",
-            "mainClass": "First",
-            "projectName": "language_study_d97e0db"
-        },
-        {
-            "type": "java",
-            "name": "Launch EmployeeTest",
-            "request": "launch",
-            "mainClass": "EmployeeTest",
-            "projectName": "languange_study_9e3bc643"
-        },
-        {
             "name": "gcc.exe - 生成和调试活动文件",
             "type": "cppdbg",
             "request": "launch",
