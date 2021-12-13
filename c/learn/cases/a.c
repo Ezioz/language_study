@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-13 16:52:19
+ * @LastEditTime: 2021-12-13 20:01:22
  */
 #include <stdio.h>
 #include <string.h>
@@ -642,4 +642,19 @@ int main(void)
 //     return 0;
 // }
 
-
+int main(void)
+{
+    FILE *fp;
+    char ch[255];
+    if ((fp = fopen("file.txt", "r")) == NULL)
+    {
+        printf("nothing");
+        exit(0);
+    }
+    while ((fgets(ch, 255, fp)) != NULL)
+    {
+        printf("%s", ch);
+    }
+    fseek(fp, 0, SEEK_SET);
+    fclose(fp);
+}
