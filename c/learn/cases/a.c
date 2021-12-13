@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-13 14:53:01
+ * @LastEditTime: 2021-12-13 16:52:19
  */
 #include <stdio.h>
 #include <string.h>
@@ -587,10 +587,59 @@ int main(void)
 //     return a+a;
 // }
 
-int main(int argc, char const *argv[])
-{
-    char ch[100] = "china";
-    char he[10] = "hello";
-    printf("%s", strcat(ch, he));
-    return 0;
-}
+// int main(int argc, char const *argv[])
+// {
+//     char ch[100] = "china";
+//     char he[10] = "hello";
+//     printf("%s", strcat(ch, he));
+//     return 0;
+// }
+/* 写文件 */
+// int main(int argc, char const *argv[])
+// {
+//     FILE *fp;
+//     if ((fp = fopen("file.txt", "w")) == NULL)
+//     {
+//         printf("NONE");
+//         exit(0);
+//     }
+//     char ch;
+//     ch = getchar();
+//     while (ch != '#')
+//     {
+//         fputc(ch, fp);
+//         fputchar(ch);
+//         ch = getchar();
+//     }
+//     fclose(fp);
+//     return 0;
+// }
+/* 读文件 */
+// int main(int argc, char const *argv[])
+// {
+//     FILE *fp;
+//     int filesize, filesize2;
+//     if ((fp = fopen("file.txt", "r")) == NULL)
+//     {
+//         printf("Error");
+//         exit(0);
+//     }
+//     char ch[255];
+
+//     while ((fgets(ch, 255, fp)) != NULL)
+//     {
+//         printf("%s", ch);
+//     }
+//     filesize = ftell(fp);
+//     printf("%d\n", filesize);
+//     fseek(fp, 0, SEEK_SET);
+//     filesize2 = ftell(fp);
+//     printf("%d", filesize2);
+//     while ((fgets(ch, 255, fp)) != NULL)
+//     {
+//         printf("%s", ch);
+//     }
+//     return 0;
+// }
+
+
