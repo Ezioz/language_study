@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch First",
+            "request": "launch",
+            "mainClass": "First",
+            "projectName": "languange_study_9e3bc643"
+        },
+        {
+            "type": "java",
             "name": "Launch Number",
             "request": "launch",
             "mainClass": "Number",

@@ -4,11 +4,13 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-10 17:08:12
+ * @LastEditTime: 2021-12-13 14:41:07
  */
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
+// #include "f2.c"
 /*
 // 输入若干个字符，分别统计数字字符和字母字符的个数，当输入换行时输出统计结果
 
@@ -422,4 +424,165 @@ int main(void)
 }
 */
 
+/* 地址传递 */
 
+// int main(void)
+// {
+//     void change(int *x, int *y);
+//     int a, b;
+//     a = 3;
+//     b = 5;
+//     int *p1, *p2;
+//     p1 = &a;
+//     p2 = &b;
+//     change(p1, p2);
+//     printf("a = %d, b = %d", a, b);
+//     return 0;
+// }
+
+// void change(int *x, int *y)
+// {
+//     int z;
+//     z = *x;
+//     printf("%d\n%p\n", *x, &x);
+//     *x = *y;
+//     *y = z;
+// }
+
+// void change(int *x, int *y);
+// int main(void)
+// {
+//     int a = 3, b = 4;
+//     int *p1, *p2;
+//     p1 = &a; // p1存储的是a的地址
+//     p2 = &b; // p2存储的是b的地址
+//     change(p1, p2);
+//     printf("a = %d, b = %d", a, b);
+//     return 0;
+// }
+
+// void change(int *x, int *y)
+// {
+//     int z;
+//     z = *x;
+//     *x = *y;
+//     *y = z;
+// }
+
+/* 验证哥德巴赫猜想：任何一个大于6 的偶数均可表示为两个素数之和。要求将6～100之间的偶数都表示为两个素数之和。*/
+/* 这个例子书中是错的 */
+
+// typedef struct test
+// {
+//     int a;
+//     struct test *next;
+// }TT, *aa;
+
+// int main(void)
+// {
+//     TT p;
+//     aa head;
+//     head = (struct test *)malloc(sizeof(TT));
+//     head->next = &p;
+//     p.a = 3;
+//     printf("%d, %d\n", p.a, head->next->a);
+//     return 0;
+// }
+/* 静态变量 static */
+// void sum();
+
+// int main(void)
+// {
+//     for (int i = 0; i < 5; i++)
+//     {
+//         sum();
+//     }
+//     return 0;
+// }
+
+// void sum()
+// {
+//     static int a = 2;
+//     int b, c;
+//     c = a + b;
+//     a++;
+//     printf("c = %d\n", c);
+// }
+/* extern 全局变量 */
+// int funct(int x, int y);
+// int main(void)
+// {
+//     extern a, b;
+//     printf("The resutlt is %d\n", funct(a, b));
+//     return 0;
+// }
+// int a = 3, b = 4;
+// int funct(int x, int y)
+// {
+//     int z;
+//     z = 3 * x + y;
+//     return z;
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     int sum(int a, int b);
+//     extern int a, b;
+//     printf("%d\n", sum(a, b));
+//     return 0;
+// }
+
+// int sum(int a, int b)
+// {
+//     return a + b;
+// }
+
+// int a = 3, b = 2;
+// int A = 3, B = 5;
+// int main(int argc, char const *argv[])
+// {
+//     int funct(int x, int y);
+//     int a, b;
+//     scanf("%d, %d", &a, &b);
+//     printf("The result is %d\n", funct(a, b));
+//     return 0;
+// }
+/* 宏定义 */
+// #define SUM(a, b) (a + b)
+// int main(int argc, char const *argv[])
+// {
+//     int a = 10, b = 20;
+//     printf("%d\n", SUM(a, b));
+//     return 0;
+// }
+
+/* 利用递归求5的阶乘 */
+
+// int factor(int n);
+// int main(int argc, char const *argv[])
+// {
+//     printf("%d\n", factor(5));
+//     return 0;
+// }
+// int factor(int n)
+// {
+//     if (n - 1 > 0) // 如果是直接n>0，由于要进行一次n-1，会造成n=0，导致结果为0
+//     {
+//         return factor(n - 1) * n;
+//     }
+// }
+
+/* const */
+// int sum(const int a);
+// int main(int argc, char const *argv[])
+// {
+//     printf("%s\n", argv[0]);
+//     printf("%d\n", sum(190));
+//     return 0;
+// }
+
+// int sum(const int a)
+// {
+//     a = 10; // 此处不可修改
+//     return a+a;
+// }
