@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-13 20:01:22
+ * @LastEditTime: 2021-12-14 17:00:14
  */
 #include <stdio.h>
 #include <string.h>
@@ -642,19 +642,83 @@ int main(void)
 //     return 0;
 // }
 
-int main(void)
-{
-    FILE *fp;
-    char ch[255];
-    if ((fp = fopen("file.txt", "r")) == NULL)
-    {
-        printf("nothing");
-        exit(0);
-    }
-    while ((fgets(ch, 255, fp)) != NULL)
-    {
-        printf("%s", ch);
-    }
-    fseek(fp, 0, SEEK_SET);
-    fclose(fp);
-}
+// int main(void)
+// {
+//     FILE *fp;
+//     char ch[255];
+//     if ((fp = fopen("file.txt", "r")) == NULL)
+//     {
+//         printf("nothing");
+//         exit(0);
+//     }
+//     while ((fgets(ch, 255, fp)) != NULL)
+//     {
+//         printf("%s", ch);
+//     }
+//     fseek(fp, 0, SEEK_SET);
+//     fclose(fp);
+// }
+/* 杨辉三角 */
+// #define N 14
+// void main()
+// {
+//     int i, j, k, n = 0, a[N][N]; /*定义二维数组a[14][14]*/
+//     while (n <= 0 || n >= 13)
+//     { /*控制打印的行数不要太大，过大会造成显示不规范*/
+//         printf("请输入要打印的行数：");
+//         scanf("%d", &n);
+//     }
+//     printf("%d行杨辉三角如下：\n", n);
+//     for (i = 1; i <= n; i++)
+//         a[i][1] = a[i][i] = 1; /*两边的数令它为1，因为现在循环从1开始，就认为a[i][1]为第一个数*/
+//     for (i = 3; i <= n; i++)
+//         for (j = 2; j <= i - 1; j++)
+//             a[i][j] = a[i - 1][j - 1] + a[i - 1][j]; /*除两边的数外都等于上两顶数之和*/
+//     for (i = 1; i <= n; i++)
+//     {
+//         for (k = 1; k <= n - i; k++)
+//             printf("   ");       /*这一行主要是在输出数之前打上空格占位，让输出的数更美观*/
+//         for (j = 1; j <= i; j++) /*j<=i的原因是不输出其它的数，只输出我们想要的数*/
+//             printf("%6d", a[i][j]);
+
+//         printf("\n"); /*当一行输出完以后换行继续下一行的输出*/
+//     }
+//     printf("\n");
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     int i, a[N][N], n = 10;
+//     for (int i = 1; i <= n; i++)
+//     {
+//         a[i][1] = a[i][i] = 1;
+//     }
+//     for (int i = 3; i <= n; i++)
+//     {
+//         for (int j = 2; j <= i - 1; j++)
+//         {
+//             a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
+//         }
+//     }
+//     for (int i = 1; i <= n; i++)
+//     {
+//         for (int k = 1; k <= n - i; k++)
+//         {
+//             printf("   ");
+//         }
+//         for (int j = 1; j <= i; j++)
+//         {
+//             printf("%6d", a[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     printf("\n");
+//     return 0;
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     char name[] = "name";
+//     printf("%d %d", sizeof(name), strlen(name));
+//     return 0;
+// }
