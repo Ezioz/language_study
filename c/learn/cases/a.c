@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-14 17:00:14
+ * @LastEditTime: 2021-12-14 22:17:31
  */
 #include <stdio.h>
 #include <string.h>
@@ -722,3 +722,53 @@ int main(void)
 //     printf("%d %d", sizeof(name), strlen(name));
 //     return 0;
 // }
+
+// #define N 10
+
+// int main(int argc, char const *argv[])
+// {
+//     int a[N][N], n = 10;
+//     for (int i = 1; i <= n; i++)
+//     {
+//         a[i][1] = a[i][i] = 1;
+//     }
+//     for (int j = 3; j <= n; j++)
+//     {
+//         for (int k = 2; k <= j - 1; k++)
+//         {
+//             a[j][k] = a[j - 1][k - 1] + a[j - 1][k];
+//         }
+//     }
+
+//     for (int i = 1; i <= n; i++)
+//     {
+//         for (int k = 1; k <= n - i; k++)
+//         {
+//             printf("   ");
+//         }
+//         for (int j = 1; j <= i; j++)
+//         {
+//             printf("%6d", a[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     printf("\n");
+//     return 0;
+// }
+
+#define TSIZE 45
+#define FMAX 5
+
+struct film
+{
+    char title[TSIZE];
+    int rating;
+};
+
+
+int main(int argc, char const *argv[])
+{
+    struct film movies[FMAX];
+    movies.title = "hello";
+    return 0;
+}
