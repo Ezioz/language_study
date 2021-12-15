@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-15 11:00:22
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-15 11:20:54
+ * @LastEditTime: 2021-12-15 20:59:14
  */
 
 #include <stdio.h>
@@ -27,9 +27,10 @@ typedef struct Student
 } STU;
 
 // 功能函数
-int Menu(void);            // 菜单
-STU *Create(int n, int m); // 创建学生链表
-void A
+int Menu(void);                                      // 菜单
+STU *Create(int n, int m);                           // 创建学生链表
+void AverSumofEveryStudent(STU *head, int n, int m); // 计算每门课程的总分和平均分
+void AverSUmofEveryCourse(STU *head, int n, int m);  //
 
 int main(int argc, char const *argv[])
 {
@@ -57,9 +58,12 @@ int main(int argc, char const *argv[])
             break;
         case 2:
             system("cls");
-            AverSumofEveryCourse(head, n, m);
+            AverSumofEveryStudent(head, n, m);
             break;
-
+        case 3:
+            system("cls");
+            AverSUmofEveryCourse(head, n, m);
+            break;
         default:
             break;
         }
@@ -94,6 +98,47 @@ STU *Create(int n, int m)
         }
     }
     return head;
+}
+
+void AverSumofEveryStudent(STU *head, int n, int m)
+{
+    STU *p = head;
+    float sum;
+    int j = 1;
+    if (head != NULL)
+    {
+        for (int i = 0; i < m; i++)
+        {
+            p = head;
+            sum = 0.0;
+            do
+            {
+                sum += p->score[i];
+                p = p->next;
+            } while (p != NULL);
+            printf("course %d: sum = %.0f, aver = %.0f\n", j, sum, sum / n);
+            j++;
+        }
+    }
+}
+
+void AverSumofEveryCourse(STU *head, int n, int m)
+{
+    STU *p = head;
+    if (head != NULL)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            p->sum = 0.0;
+            for (int j = 0; j < m; j++)
+            {
+                p->sum += p->score[j];
+            }
+            p->aver = p->sum / n;
+            printf("sutdent %d: sum = %.0f, aver = %.0f\n", i + 1, p->sum, p->aver);
+            p = p->next;
+        }
+    }
 }
 
 // 菜单
