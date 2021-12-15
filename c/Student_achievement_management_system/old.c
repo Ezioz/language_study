@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-07 23:01:01
+ * @LastEditTime: 2021-12-15 11:11:05
  */
 /**
  * @description:
@@ -172,7 +172,7 @@ STU *Create(int n, int m)
     STU *head, *p1, *p2; // head 是头指针，p2 是临时指针， p1 指向新创结点
     for (int i = 0; i < n + 1; i++)
     {
-        p1 = (STU *)malloc(LEN);
+        p1 = (STU *)malloc(sizeof(LEN));
         scanf("%ld", &p1->num);
         scanf("%s", p1->name);
         for (int j = 0; j < m; j++) // j 代表的是当前是第几门课程
