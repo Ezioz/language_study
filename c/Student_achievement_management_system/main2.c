@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-17 15:49:19
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-17 17:21:41
+ * @LastEditTime: 2021-12-19 22:50:56
  */
 
 #include <stdio.h>
@@ -57,11 +57,24 @@ int main(int argc, char const *argv[])
             scanf("%d", &temp_id);
             head = Delete(head, temp_id);
             break;
+        case 4:
+            printf("请您选择排序方式：1.英语 2.python 3.c");
+            scanf("%d", &temp_id);
+            head = SortElm(head, temp_id);
+            break;
         default:
             break;
         }
     }
     return 0;
+}
+
+// 排序学生成绩
+Linklist SortElm(STU *head, int temp_id)
+{
+    Linklist temp;
+    temp = head;
+    
 }
 
 // 修改学生信息
@@ -86,15 +99,12 @@ STU *Amelem(STU *head, int temp_id)
                 printf("请输入新的c成绩：");
                 scanf("%f", &temp->c);
             }
-            
         }
-        
-    }else
+    }
+    else
     {
         printf("暂时没有学生信息！");
     }
-    
-    
 }
 
 // 删除学生信息
