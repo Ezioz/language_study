@@ -4,23 +4,12 @@
  * @Author: ahtoh
  * @Date: 2021-12-17 15:49:19
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-19 22:50:56
+ * @LastEditTime: 2021-12-20 23:24:35
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define LEN sizeof(struct Student)
-
-typedef struct Student
-{
-    int id;
-    char name[30];
-    float english;
-    float python;
-    float c;
-    struct Student *next;
-} STU, *Linklist;
+#include "student.h"
 
 void Menu(void);
 Linklist Init(void);
@@ -28,6 +17,7 @@ void Search(Linklist head, int temp_id);
 STU *Delete(STU *head, int temp_id);
 STU *Amelem(STU *head, int temp_id);
 Linklist SortElm(STU *head, int temp_id);
+int total(Linklist head);
 
 int main(int argc, char const *argv[])
 {
@@ -58,10 +48,27 @@ int main(int argc, char const *argv[])
             head = Delete(head, temp_id);
             break;
         case 4:
+            printf("请输入要修改学生的id：");
+            scanf("%d", &temp_id);
+            head = Amelem(head, temp_id);
+            show(head);
+            break;
+        case 5:
             printf("请您选择排序方式：1.英语 2.python 3.c");
             scanf("%d", &temp_id);
             head = SortElm(head, temp_id);
             break;
+
+        case 6:
+            printf("只统计学生个数：\n");
+            temp_id = total(head);
+            printf("目前共有学生：%d 名。", temp_id);
+            break;
+        case 7:
+            show(head);
+            break;
+        case 0:
+            exit(0);
         default:
             break;
         }
@@ -69,12 +76,67 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-// 排序学生成绩
+// 展示学生信息
+void show(Linklist head)
+{
+    Linklist temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+        printf("学生id：%d，姓名：%s，English：%0.2f, python：%0.2f，c：%0.2f\n", temp->id, temp->name, temp->english, temp->python, temp->c);
+    }
+    if (temp->next == NULL)
+    {
+        printf("没有学生信息。\n");
+    }
+}
+
+// 统计学生个数
+int total(Linklist head)
+{
+    int student_number = 0;
+    Linklist temp = head;
+    while (temp->next != NULL)
+    {
+        student_number++;
+        temp = temp->next;
+    }
+    return student_number;
+}
+
+// 排序学生成绩，1 英语， 2 python， 3 c
 Linklist SortElm(STU *head, int temp_id)
 {
-    Linklist temp;
+    switch (temp_id)
+    {
+    case 1:
+        char classname[8] = "english";
+        head = ClassSort(head, classname);
+        break;
+    case 2:
+        char classname[8] = "python";
+    case 3:
+        char classname[8] = "c";
+    default:
+        printf("您的输入有误，没有排序！");
+        break;
+    }
+}
+
+// 课程排序
+Linklist ClassSort(Linklist head, char classname[])
+{
+    Linklist temp, p, p2;
     temp = head;
-    
+    if (temp->next != NULL)
+    {
+        head 
+    }
+    else
+    {
+        printf("目前没有学生信息！");
+    }
+    return 0;
 }
 
 // 修改学生信息
