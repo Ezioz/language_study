@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-16 13:39:13
 LastEditors: ahtoh
-LastEditTime: 2021-12-16 13:42:19
+LastEditTime: 2021-12-21 14:59:30
 '''
 
 import requests
@@ -15,9 +15,19 @@ types = 'https'
 proxys = {}
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_10) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/12.0 Safari/1200.1.25'}
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0'}
 r = requests.get(url, headers=headers).text
+print(r)
 ip = re.findall('((?:[0-9]{1,3}\.){3}[0-9]{1,3})', r)
 port = re.findall('(:\d{1,5})', r)
-for i, j in zip(port[2:], ip):
-    print(j+i)
+for i, j in zip(port[2:], ip):  # i是端口，j是ip地址
+    proxy = j + i
+    proxys[types.lower()] = proxy
+    try:
+        tar = requests.get('https://ifconfig.me/ip', headers=headers,
+                           proxies=proxys, timeout=5, verify=False).text
+        if tar in str(proxys):
+            with open('./ip.txt', 'a') as file:
+                file.write( + '\n')
+    except:
+        pass
