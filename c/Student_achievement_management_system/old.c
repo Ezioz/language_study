@@ -6,7 +6,7 @@
  * @Author: ahtoh
  * @Date: 2021-10-29 15:23:39
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-15 20:57:34
+ * @LastEditTime: 2021-12-22 16:05:53
  */
 /**
  * @description:
@@ -246,7 +246,7 @@ STU *SortbyScore(STU *head, int n)
     head = p1;                // 再让head 指向p1,此时 head 与 p1 指向同一地址
     /*
     第一次外层for循环时,endpt=null,其不等于head成立
-    进入内层for循环.将p指针指向与p1与head相同的地址,p1->next->next不等于endpt成立,因为endpt=null.进入if判断.此处功能是判断链表程度,如果成立,则说明只有一个结点
+    进入内层for循环.将p指针指向与p1与head相同的地址,p1->next->next不等于endpt成立,因为endpt=null.进入if判断.此处功能是判断链表长度,如果成立,则说明只有一个结点
     p1->next->sum代表的是第二个结点的数据域中的sum值,与第三个结点的sum值进行比较,如果小于,则
     p2 = p1->next->next: p2指向第三个结点
     p1->next->next = p2->next: 第二个结点的指针域存储的不再是第三个结点的地址,而是第四个

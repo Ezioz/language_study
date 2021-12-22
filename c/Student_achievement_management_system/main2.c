@@ -4,21 +4,19 @@
  * @Author: ahtoh
  * @Date: 2021-12-17 15:49:19
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-21 17:30:45
+ * @LastEditTime: 2021-12-22 15:25:50
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "student.h"
 
-extern STU;
-
 void Menu(void);
 Linklist Init(void);
 void Search(Linklist head, int temp_id);
 STU *Delete(STU *head, int temp_id);
 STU *Amelem(STU *head, int temp_id);
-// Linklist SortElm(STU *head, int temp_id);
+Linklist SortElm(STU *head, int temp_id);
 int total(Linklist head);
 Linklist ClassSort(Linklist head);
 
@@ -142,8 +140,9 @@ Linklist ClassSort(Linklist head)
             {
                 if (p->english < p2->english)
                 {
-                    p = p2->next;
-                    p2 = temp->next;
+                    p->next = p2->next;
+                    temp->next = p2;
+                    p2->next = p;
                     temp = p2;
                 }
             }
