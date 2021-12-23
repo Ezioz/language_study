@@ -4,10 +4,11 @@ version:
 Author: ahtoh
 Date: 2021-12-23 10:33:52
 LastEditors: ahtoh
-LastEditTime: 2021-12-23 14:18:15
+LastEditTime: 2021-12-23 22:23:17
 '''
 
 from socket import *
+import os
 
 HOST = 'localhost'
 PORT= 12345
@@ -18,15 +19,15 @@ tcpsock.bind(ADDR)
 tcpsock.listen(5)
 
 while True:
-    print('...waiting...')
-    tcpcall, addr = tcpsock.accept()
-    print('...connect from :', addr)
+    print('....waiting.....')
+    consock, addr = tcpsock.accept()
+    print('connected from .....', addr)
     while True:
-        data = tcpcall.recv(1024)
+        data = consock.recv(1024)
         if not data:
             break
-        print(data.decode())
-        tcpcall.send(data)
-    tcpcall.close()
+        print(data)
+        print(os.system(data.decode()))
+        consock.send(bytes(os.system(data.decode())))
+    consock.close()
 tcpsock.close()
-
