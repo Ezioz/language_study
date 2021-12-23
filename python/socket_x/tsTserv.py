@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-22 09:50:26
 LastEditors: ahtoh
-LastEditTime: 2021-12-22 22:28:39
+LastEditTime: 2021-12-23 10:09:56
 '''
 # import socket
 
@@ -39,8 +39,9 @@ while True:
     print('...connected from : ', addr)
     while True:
         data = tcpclisock.recv(BUFSIZ)
+        print(data)
         if not data:
             break
-        tcpclisock.send('[%s] %s ' %(bytes(ctime(), 'utf-8'), data))
+        tcpclisock.send(data)
     tcpclisock.close()
 tcpSock.close()

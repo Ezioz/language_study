@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-22 09:58:43
 LastEditors: ahtoh
-LastEditTime: 2021-12-22 23:00:57
+LastEditTime: 2021-12-23 10:13:10
 '''
 
 # import socket
@@ -26,12 +26,14 @@ tcpclient = socket(AF_INET, SOCK_STREAM)
 tcpclient.connect(ADDR)
 
 while True:
-    data = input('> ')
+    data = input('> ').strip()
+    print(type(data))
     if not data:
         break
-    tcpclient.send(data)
-    data = tcpclient.recv(BUFSIZ)
+    tcpclient.send(data.encode())
+    print(type(data.encode()))
+    data = tcpclient.recv(BUFSIZ).decode()
     if not data:
         break
-    print(data.decode('utf-8'))
+    print(data)
 tcpclient.close()
