@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-27 14:49:12
+ * @LastEditTime: 2021-12-29 15:43:22
  */
 #include <stdio.h>
 #include <string.h>
@@ -795,13 +795,25 @@ int main(void)
 void test()
 {
     int n = 10;
+    printf("188");
     return;
 }
 
 int main(int argc, char const *argv[])
 {
     int n = 100;
-    test();
-    printf("%d\n", n);
+    typedef enum
+    {
+        TRUE = 1,
+        FALSE = 0
+    } bool;
+
+    bool flag = FALSE;
+    if (!flag)
+    {
+        test();
+        printf("%d\n", n);
+    }
+
     return 0;
 }
