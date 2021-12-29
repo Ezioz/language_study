@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-23 10:33:52
 LastEditors: ahtoh
-LastEditTime: 2021-12-26 22:48:53
+LastEditTime: 2021-12-27 11:06:59
 '''
 
 from socket import *
@@ -16,6 +16,16 @@ PORT= 12345
 ADDR = (HOST, PORT)
 
 udpSerSock = socket(AF_INET, SOCK_DGRAM)
+udpSerSock.bind(ADDR)
+while True:
+    data, addr = udpSerSock.recvfrom(1024)
+    if not data:
+        break
+    print('contected from ', addr)
+    print(data)
+    udpSerSock.sendto(data, ADDR)
+udpSerSock.close()
+
 
 
 

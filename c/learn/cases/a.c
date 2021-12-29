@@ -4,7 +4,7 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2021-12-14 22:17:31
+ * @LastEditTime: 2021-12-29 15:43:22
  */
 #include <stdio.h>
 #include <string.h>
@@ -756,19 +756,64 @@ int main(void)
 //     return 0;
 // }
 
-#define TSIZE 45
-#define FMAX 5
+// #define TSIZE 45
+// #define FMAX 5
 
-struct film
+// struct film
+// {
+//     char title[TSIZE];
+//     int rating;
+// };
+
+// int main(int argc, char const *argv[])
+// {
+//     struct film movies[FMAX];
+//     movies.title = "hello";
+//     return 0;
+// }
+
+// int main(int argc, char const *argv[])
+// {
+//     while (1)
+//     {
+//         printf("twice\n");
+//         while (1)
+//         {
+//             int a;
+//             scanf("%d", &a);
+//             printf("%d\n", a);
+//             if (a == 3)
+//             {
+//                 break;
+//             }
+//         }
+//     }
+
+//     return 0;
+// }
+
+void test()
 {
-    char title[TSIZE];
-    int rating;
-};
-
+    int n = 10;
+    printf("188");
+    return;
+}
 
 int main(int argc, char const *argv[])
 {
-    struct film movies[FMAX];
-    movies.title = "hello";
+    int n = 100;
+    typedef enum
+    {
+        TRUE = 1,
+        FALSE = 0
+    } bool;
+
+    bool flag = FALSE;
+    if (!flag)
+    {
+        test();
+        printf("%d\n", n);
+    }
+
     return 0;
 }

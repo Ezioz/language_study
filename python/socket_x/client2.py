@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2021-12-23 10:33:57
 LastEditors: ahtoh
-LastEditTime: 2021-12-25 22:28:50
+LastEditTime: 2021-12-29 10:03:29
 '''
 
 import socket
@@ -39,4 +39,3 @@ while True:
     print(data.decode())
 tcpclient.close()
 '''
-
