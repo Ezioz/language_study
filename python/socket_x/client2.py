@@ -39,5 +39,3 @@ while True:
     print(data.decode())
 tcpclient.close()
 '''
-
-test
