@@ -1,3 +1,11 @@
+'''
+Descripttion: 
+version: 
+Author: ahtoh
+Date: 2021-11-29 17:29:03
+LastEditors: ahtoh
+LastEditTime: 2021-12-31 16:13:29
+'''
 from croe.file import append_file, load_file, clear_empty
 from utils.fofa_Client import fetch_app
 from croe.ThreadMap import thread_map
@@ -22,7 +30,9 @@ def scan_poc(fofa_domain,age):
 
 
 def run(fofa_domain,age):
+    # 形式参数，传入域名和age？
     try:
+        # poc()函数，将
         poc_list = poc(fofa_domain)
         if poc_list != None:
             o = urlparse(poc_list[0])
