@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2022-01-20 14:32:37
 LastEditors: ahtoh
-LastEditTime: 2022-01-20 17:08:23
+LastEditTime: 2022-01-27 16:35:14
 '''
 #!/usr/bin/python3
 import sys
@@ -45,11 +45,12 @@ proxy = {"http": "http://" + ip_port, "https": "http://" + ip_port}
 headers = {"Proxy-Authorization": auth, "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"}
 for i in range(10):
     # r = requests.get("http://pv.sohu.com/cityjson", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
-    r = requests.get("http://httpbin.org/get", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
+    # r = requests.get("http://httpbin.org/get", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
+    r = requests.get("http://forward.xdaili.cn:80", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
 
     # r.encoding='utf8'
     # print(r.status_code)
-    print(r.content.decode('GB2312'))
+    print(r.content.decode(), end='')
 # if r.status_code == 302 or r.status_code == 301 :
 #     loc = r.headers['Location']
 #     print(loc)

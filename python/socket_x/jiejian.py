@@ -4,7 +4,7 @@ version:
 Author: ahtoh
 Date: 2022-01-20 15:45:33
 LastEditors: ahtoh
-LastEditTime: 2022-01-20 16:40:20
+LastEditTime: 2022-01-27 16:30:10
 '''
 #!/usr/bin/env python3
 # coding:utf-8
@@ -124,6 +124,7 @@ def main():
     proxy = {"http": "http://" + ip_port, "https": "http://" + ip_port}
     headers = {"Proxy-Authorization": auth,
                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"}
+    ip_list = requests.get('http://forward.xdaili.cn:80', headers=headers, proxies=proxy, verify=False, allow_redirects=False)
     try:
         try_ip = ProxyServerTest(ip_list)
     except Exception as e:
