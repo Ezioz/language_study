@@ -1,23 +1,23 @@
 /*
- * @Descripttion:
- * @version:
+ * @Descripttion: 
+ * @version: 
  * @Author: ahtoh
- * @Date: 2022-03-01 10:38:23
+ * @Date: 2022-03-09 20:23:23
  * @LastEditors: ahtoh
- * @LastEditTime: 2022-03-01 14:00:24
+ * @LastEditTime: 2022-03-09 20:25:18
  */
-package main
 
-// var x, y int
-// var (
-// 	a int
-// 	b bool
-// )
+ package main
+ import (
+	 "fmt"
+	 "os"
+ )
 
-// var c, d int = 1, 2
-// var e, f = 123, "hello"
-
-// func main() {
-// 	g, h := 123, "hello"
-// 	println(x, y, a, b, c, d, e, f, g, h)
-// }
+ func main() {
+	 var s, sep string
+	 for i:=1; i< len(os.Args);i++{
+		 s += sep + os.Args[i]
+		 sep  = "  "
+	 }
+	 fmt.Println(s)
+ }
