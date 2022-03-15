@@ -4,12 +4,25 @@
  * @Author: ahtoh
  * @Date: 2021-12-09 10:51:48
  * @LastEditors: ahtoh
- * @LastEditTime: 2022-03-15 10:58:39
+ * @LastEditTime: 2022-03-15 15:41:18
  */
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main(int argc, char const *argv[])
+{
+    printf("uid is %ld\n", getuid());
+    return 0;
+}
+
+
+
+
+
 // #include "f2.c"
 /*
 // 输入若干个字符，分别统计数字字符和字母字符的个数，当输入换行时输出统计结果
@@ -817,3 +830,4 @@ int main(void)
 
 //     return 0;
 // }
+
