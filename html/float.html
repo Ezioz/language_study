@@ -1,13 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: ahtoh
- * @Date: 2022-03-15 19:24:35
- * @LastEditors: ahtoh
- * @LastEditTime: 2022-03-15 22:30:04
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,64 +5,120 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="./reset.css">
+    <title>Document</title>
     <style>
-        .box1 {
+        .wrap {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .common {
             float: left;
-            width: 150px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .left {
+            float: left;
+            width: 600px;
+        }
+
+        .right {
+            float: right;
+            width: 400px;
+        }
+
+        .left-common {
+            float: left;
+            width: 300px;
             height: 300px;
-            background: #999;
-            font-size: 40px;
-            text-align: center;
-            line-height: 150px;
+        }
+
+        .box8 {
+            clear: both;
+            height: 100px;
+        }
+
+        .box9 {
+            height: 150px;
+
+        }
+
+        .box10 {
+            height: 250px;
+        }
+
+        .box11 {
+            clear: both;
+            height: 80px;
+        }
+
+        .box1 {
+            background: #ccc;
         }
 
         .box2 {
-            float: left;
-            width: 150px;
-            height: 200px;
-            background: #ccc;
-            font-size: 40px;
-            text-align: center;
-            line-height: 150px;
+            background: #a9a9a9;
         }
 
         .box3 {
-            float: left;
-            width: 150px;
-            height: 150px;
-            background: blue;
-            font-size: 40px;
-            text-align: center;
-            line-height: 150px;
+            background: #ccc;
         }
 
         .box4 {
-            float: left;
-            width: 150px;
-            height: 150px;
-            background: yellow;
-            font-size: 40px;
-            text-align: center;
-            line-height: 150px;
+            background: #a9a9a9;
         }
 
-        .wrap {
-            width: 300px;
-            border: 5px solid black;
+        .box5 {
+            background: #ccc;
+        }
+
+        .box6 {
+            background: #999;
+        }
+
+        .box7 {
+            background: #d9d9d9;
+        }
+
+        .box8 {
+            background: #ccc;
+        }
+
+        .box9 {
+            background: #999;
+        }
+
+        .box10 {
+            background: #a9a9a9;
+        }
+
+        .box11 {
+            background: #d9d9d9;
         }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <div class="box1"></div>
-        <div class="box2"></div>
-        <div class="box3"></div>
-        <div class="box4"></div>
-    </div>
+        <div class="common box1">1</div>
+        <div class="common box2">2</div>
+        <div class="common box3">3</div>
+        <div class="common box4">4</div>
+        <div class="common box5">5</div>
+        <div class="left">
+            <div class="left-common box6">6</div>
+            <div class="left-common box7">7</div>
+            <div class="box8">8</div>
+        </div>
+        <div class="right">
+            <div class="box9">9</div>
+            <div class="box10">10</div>
+        </div>
+        <div class="box11">11</div>
 
+    </div>
 </body>
 
 </html>
